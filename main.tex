@@ -1,0 +1,463 @@
+\documentclass[darkhipster]{hipstercv}
+% available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight
+\usepackage[utf8]{inputenc}
+\usepackage[default]{raleway}
+\usepackage[margin=1cm,bottom=0.8cm, a4paper,includefoot,heightrounded]{geometry}
+\usepackage{datenumber,fp}
+\usepackage{changepage}
+\usepackage{makecell}
+\usepackage{url}
+\usepackage{fontawesome5}
+\usepackage[most]{tcolorbox}
+\usepackage{supertabular,booktabs}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={maincolor!45!black}
+}
+
+\urlstyle{sf}
+
+% Header / footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt} % no line in header area
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[R]{
+  \selectfont \color{black!70}
+  {\small \icon{\faMapMarker}{maincolor}{} 24 rue Pasteur 93400 Saint-Ouen -- France\\ \icon{\faPhone}{maincolor}{} +33 6 21 55 15 34 \icon{\faAt}{maincolor}{} \href{mailto:nmaupu@gmail.com}{\nolinkurl{nmaupu@gmail.com}}}
+}
+
+% \cvdegree{2015}{Docker}{Administration and Operation}{foo} \\
+\renewcommand{\cvdegree}[4]{%
+	{#1} & %
+	\textbf{#2} \small {#3} \newline %
+	{\color{black!70}\scriptsize #4} \vspace{0.5em} %
+}
+
+\newcommand{\cvsection}[1] {%
+	\section*{\textbf{#1}}
+}%
+
+% -----
+
+\definecolor{maincolor}{HTML}{0077b5}%
+\definecolor{maincolorlight}{HTML}{e6f2f8}%
+\definecolor{maincolorfont}{HTML}{ffffff}%
+\definecolor{maincolorlightfont}{HTML}{000000}%
+\definecolor{headerblue}{HTML}{0077b5}% override default color from template
+\definecolor{headerbluefont}{HTML}{ffffff}%
+
+\renewcommand{\setasidefontcolour}{
+	\color{black}
+}
+
+\renewcommand{\pictofraction}[2]{%
+\ifthenelse{\equal{#2}{0}}{}{\pgfmathparse{#2 - 1}\foreach \n in {0,...,\pgfmathresult}{\icon{\faCircle}{#1}{\tiny}}}%
+\ifthenelse{\equal{#2}{5}}{}{\pgfmathparse{5 - #2 - 1}\foreach \n in {0,...,\pgfmathresult}{\icon{\faCircle}{black!30}{\tiny}}}%
+}
+
+% \hobbyicon{\color{iconcolour}\faPlane}{Travels}{cvgreen}{\iconsize}{2em}
+\renewcommand{\hobbyicon}[5]{%
+	\begin{tikzpicture}%
+		\draw[draw=none,fill=#3,opacity=.55] (0,0) circle (0.58);%
+		\node[](icon) at (0,0) {#4#1};%
+		\node[below=#5,align=center] at (icon) {#2};%
+	\end{tikzpicture}
+}
+
+\renewcommand{\cvevent}[8]{%
+	{\small #1 \newline #2} & 
+	{#3 $\cdot$ \small{{#5 ~\faMapMarker}}}\newline
+	{\color{black!70}\footnotesize #6}
+	\vspace{#8} &
+	\raisebox{-0.7\height}{\includegraphics[height=1cm]{#7}}
+}
+
+\renewcommand{\header}[9]{
+\tikz[remember picture,overlay] {%
+\node[rectangle, fill=#6, anchor=north, minimum width=\paperwidth, minimum height=5cm](header) at (current page.north){};%
+\node[left=#9 of header.north, anchor=east](name) at (header.east) {\fontfamily{\sfdefault}\selectfont #2};%
+\node[anchor=south east](degree) at (name.north east) {\fontfamily{\sfdefault}\selectfont #1};%
+\node[anchor=north east](descr) at (name.south east) {\fontfamily{\sfdefault}\selectfont #3};%
+\node (leftqr)   [right=#7 of header.west, inner sep=0, outer sep=0] at (0,0) {\includegraphics[height=4cm]{#4}};%
+\node (rightqr) [right=#8 of leftqr.west, inner sep=0, outer sep=0] at (0,0) {\includegraphics[height=4cm]{#5}};%
+}%
+\vspace{1.5cm}%
+}
+
+\renewcommand{\paracolbackgroundoptions}{
+\backgroundcolor{c[0](4pt,4pt)(0.5\columnsep,4pt)}[HTML]{e6f2f8}
+\backgroundcolor{c[1](0.5\columnsep,4pt)(4pt,4pt)}[HTML]{ffffff}
+\backgroundcolor{C[0](10000pt,10000pt)(0.5\columnsep,10000pt)}[HTML]{e6f2f8}
+\backgroundcolor{C[1](0.5\columnsep,10000pt)(10000pt,10000pt)}[HTML]{ffffff}
+}
+
+\renewcommand{\bg}[3]{
+	\colorbox{#1}{\bfseries\color{#2}#3}
+}
+\newcommand{\bgtitle}[3]{%
+	\begin{tikzpicture}[x=1cm,y=1cm]%
+		\node at (0,0) [draw=none, fill=#1, rectangle, inner sep=0, outer sep=0, minimum width=55mm, minimum height=1.4mm]{};%
+		\node at (0,0) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large #3\hspace*{0.2cm}};%
+	\end{tikzpicture}%
+}
+%\newcommand{\bgtitle}[3]{%
+%	\begin{tikzpicture}[x=1cm,y=1cm]%
+%		\node at (0,0) [draw=none, fill=#1, rectangle, left, inner sep=0, outer sep=0, minimum width=12mm, minimum height=1.4mm]{};%
+%		\node at (0,0) [draw=none, rectangle, right]{\hspace*{0.2cm}\bfseries\large #3};%
+%	\end{tikzpicture}%
+%}
+\newcommand{\bgskill}[3]{%
+	%\tikz \node at (0,0) [halign=right, anchor=center, draw=none, fill=#1, rectangle, minimum width=30mm,text=#2]{#3};%
+	\colorbox{#1}{\bfseries\color{#2}#3}
+}
+\renewcommand{\bgupper}[3]{
+	\colorbox{#1}{\color{#2}\huge\bfseries\textsc{#3}}
+}
+
+% Define typographic struts, as suggested by Claudio Beccari
+%   in an article in TeX and TUG News, Vol. 2, 1993.
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcommand\TstrutMini{\rule{0pt}{2.3ex}}         % = `top' strut
+
+%\newenvironment{absolutelynopagebreak}
+%  {\par\nobreak\vfil\penalty0\vfilneg
+%   \vtop\bgroup}
+%  {\par\xdef\tpd{\the\prevdepth}\egroup
+%   \prevdepth=\tpd}
+
+%------------------------------------------------------------------ Variables
+
+\newlength{\rightcolwidth}
+\newlength{\leftcolwidth}
+\setlength{\leftcolwidth}{0.3\textwidth}
+\setlength{\rightcolwidth}{0.65\textwidth}
+
+%------------------------------------------------------------------
+\title{CV}
+\author{Nicolas Maupu}
+\date{September 2023}
+
+\begin{document}
+
+%-------------------------------------------------------------
+
+\section*{Start}
+
+\newcounter{dateone}%
+\newcounter{datetwo}%
+
+% Compute number of years of experience from start date
+\setmydatenumber{dateone}{2007}{05}{01}%
+\setmydatenumber{datetwo}{\the\year}{\the\month}{\the\day}%
+\FPsub\result{\thedatetwo}{\thedateone}
+\FPsub\result{\thedatetwo}{\thedateone}
+\FPdiv\myage{\result}{365.2425}
+\myage
+
+\header
+  {\color{headerbluefont} \huge \bfseries Nicolas Maupu}
+  {\color{headerbluefont} \emph{\large SRE/DevOps, Kubernetes, Go and cloud expert}}
+  {\color{headerbluefont} \emph{{\bfseries Freelance} - \FPround\myage{\myage}{0}\myage+ years of experience}}
+  {qr-github.png}
+  {qr-linkedin.png}
+  {headerblue}
+  {-0.25cm} % left margin qr 1 from header west
+  {4.25cm} % left margin qr 2 relative to qr 1
+  {0.7cm} % right margin
+
+
+%------------------------------------------------
+
+% The "invisible" heading has to be included here because otherwise it won't start the Paracols... strange...
+\subsection*{}
+
+\setlength{\columnsep}{0.5cm}
+\columnratio{0.28}[0.7]
+\begin{paracol}{2}
+\hbadness=5000
+\paracolbackgroundoptions
+
+\begin{adjustwidth}{-0.5cm}{0cm} % locate left margin content a little bit more to the left
+
+\small
+{\setasidefontcolour
+\bgtitle{maincolor}{maincolorlight}{About me}
+\bigskip
+
+
+\begin{tabular}{ll}
+\faMale&Nicolas Maupu \\
+\faGlobe&French \\
+\faBirthdayCake&1982 \\
+\faMapMarker&Paris \\
+\end{tabular}
+
+%\bigskip
+%\bg{maincolor}{maincolorfont}{Areas of specialization} \\
+%Kubernetes  ~•~ Cloud ~•~ SRE/DevOPS
+
+\bigskip
+\bgtitle{maincolor}{maincolorlight}{Languages}
+\bigskip
+
+
+\begin{minipage}[t]{\leftcolwidth}
+\begin{tabular}{l | ll}
+\textbf{French}  & C2 & {\phantom{x}\footnotesize mother tongue} \\
+\textbf{English}  & C1 &\pictofraction{maincolor}{4} \\
+\end{tabular}
+\end{minipage}
+
+\bigskip
+\bgtitle{maincolor}{maincolorlight}{Interests}
+\bigskip
+
+\bubblediagram{{\textbf{Cloud Expert}},  AWS, GCP, SRE/DevOPS, Azure, \textbf{Golang}, Architecture, \textbf{Kubernetes}}
+
+%\hspace{3cm} \color{labelcolour}{OS:} \hspace{0.05em} \icon{\faLinux}{labelcolour}{\Large} 
+\bigskip
+\bgtitle{maincolor}{maincolorlight}{Skill highlights}
+\bigskip
+
+\begin{minipage}[t]{0.3\textwidth}
+\begin{tabular}{r @{\hspace{0.5em}}l}
+     \multicolumn{2}{l}{\bfseries Clouds and containerization }\\
+     \hline
+     \bgskill{lightgray}{black}{Kubernetes} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{lightgray}{black}{Amazon AWS} & \pictofraction{maincolor}{3}\TstrutMini\\
+     \bgskill{lightgray}{black}{Google GCP} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{lightgray}{black}{Cloudflare} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{lightgray}{black}{Microsoft Azure} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+
+     \multicolumn{2}{l}{\bfseries Infrastructure as Code}\\
+     \hline
+     \bgskill{lightgray}{black}{Git} & \pictofraction{maincolor}{5}\Tstrut\\
+     \bgskill{lightgray}{black}{GitOps} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{lightgray}{black}{Terraform} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{lightgray}{black}{Ansible} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+
+     \multicolumn{2}{l}{\bfseries Monitoring}\\
+     \hline
+     \bgskill{lightgray}{black}{Prometheus} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{lightgray}{black}{Thanos} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+
+     \multicolumn{2}{l}{\bfseries Systems \& Languages}\\
+     \hline
+     \bgskill{lightgray}{black}{Golang} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{lightgray}{black}{Python} & \pictofraction{maincolor}{3}\TstrutMini\\
+     \bgskill{lightgray}{black}{Bash} & \pictofraction{maincolor}{5}\TstrutMini\\
+     \bgskill{lightgray}{black}{GNU/Linux} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+\end{tabular}
+
+%\dashrule{}{}
+\end{minipage}
+
+\vspace{2cm} % fill the rest of the column so that the background is stretch on the whole column (otherwise ugly white margings appear)
+
+}
+\end{adjustwidth}
+%-----------------------------------------------------------
+\switchcolumn
+
+\vspace{.5em}
+
+\begin{minipage}[t]{0.72\textwidth}
+\cvsection{Profesionnal objective}
+\small Kubernetes and cloud expert with 16+ years of experience in designing and managing highly available and scalable production platforms.
+Looking for an opportunity to join the chess industry to ally my passion for the game and my professional life. Passionate about technology, I am excited to use all my knowledge to help you thrive.
+\end{minipage}
+
+\vspace{1.5em}
+
+\begin{minipage}[t]{0.72\textwidth}
+\cvsection{Latest experiences at a glance}
+	\begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} c }
+		 \cvevent
+			{Oct. 2021}{Jan. 2023}
+			{\textbf{Sonepar} $\cdot$ Freelance}
+			{SRE/Architect}
+			{Paris (Remote)\color{cvred}}
+			{
+				Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
+			}
+			{sonepar.png}{0.8em} \\
+		\cvevent
+			{Aug. 2019}{Sept. 2021}
+			{\textbf{e.Voyageurs SNCF} $\cdot$ Freelance}
+			{SRE/Architect}
+			{Lille (Remote)\color{cvred}}
+			{
+				Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
+			}
+			{evoy.png}{0.8em} \\
+		\cvevent
+			{Nov. 2017}{Aug. 2019}
+			{\textbf{Ritmx} $\cdot$ Freelance}
+			{SRE/Architect}
+			{Paris (half remote)\color{cvred}}
+			{
+				Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
+			}
+			{ritmx.png}{0.8em} \\
+		\cvevent
+			{Sept. 2016}{Oct. 2017}
+			{\textbf{Mirakl} $\cdot$ Freelance}
+			{SRE/Architect}
+			{Paris \color{cvred}}
+			{
+				Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
+			}
+			{mirakl.png}{-0.8em} \\
+	\end{tabular}
+\end{minipage}
+
+\vspace{1.5em}
+
+
+\begin{tabular}[t]{@{}p{0.5\textwidth} c@{}} % @{} removes margins of the tabular
+{
+\begin{minipage}[t]{0.5\textwidth}
+\cvsection{Degrees}
+\begin{tabular}{r p{0.8\textwidth} c}
+    \cvdegree{2007}{Master}{Analyses des Systèmes Stratégiques}{Awarded with high honours -- Versailles} \\
+    \cvdegree{2003}{DUT}{G\'{e}nie informatique}{Awarded with honours -- V\'{e}lizy} \\
+    \cvdegree{2001}{Bac g\'{e}n\'{e}ral}{S\'{e}rie S, sp\'{e}cialit\'{e} math\'{e}matiques}{D\'{e}ville-les-Rouen} \\
+\end{tabular}
+
+\vspace{1.5em}
+
+\cvsection{Miscellaneous}
+\small
+\begin{itemize}
+	\item {\bfseries{2013}} (7 months), {\bfseries{2016}} (7 months) and {\bfseries{2023}} (7 months): Travel around the world.
+	\item Open source projects and experimentations:
+	\begin{itemize}
+		\item \emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject secret resource based on Hashicorp Vault) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}
+		\item \emph{\bfseries{freenas-provisioner}} creator (Kubernetes operator (Go) to dynamically provision a NFS volume from a freenas instance) \\ {\footnotesize \url{https://github.com/nmaupu/freenas-provisioner}}
+		\item Reverse engineering work on iOt devices \\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}
+	\end{itemize}
+\end{itemize}
+
+\end{minipage}
+} & {
+\begin{minipage}[t]{0.19\textwidth}
+\cvsection{Hobbies}
+	\begin{tabular}[t]{cc}
+	% usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
+	\hobbyicon{\color{iconcolour}\faPlane}{Travel}{cvgreen}{\iconsize}{2em} &
+	\hobbyicon{\color{iconcolour}\faCamera}{Photo}{cvorange}{\iconsize}{2em} \\
+	\hobbyicon{\color{iconcolour}\faWrench}{DIY}{cvpurple}{\iconsize}{2em} &
+	\hobbyicon{\color{iconcolour}\faChessPawn}{Chess}{lightgray}{\iconsize}{2em} \\
+	\hobbyicon{\color{iconcolour}\faGamepad}{Games}{red}{\iconsize}{2em} &
+	\hobbyicon{\color{iconcolour}\faMountain}{Climbing}{cyan}{\iconsize}{2em} \\
+	\end{tabular}
+\end{minipage}
+} \\
+
+\end{tabular}
+
+\end{paracol}
+
+\small
+\cvsection{Detailed Work Experiences}
+\begin{supertabular}{p{1.5cm}| p{0.4\textwidth} c}
+    \cvevent
+	{Oct. 2021}{Jan. 2023}
+	{Sonepar -- Freelance}
+	{SRE/Architect}
+	{Paris (Remote)\color{cvred}}
+	{
+		Prepared and implemented a multi-tenants architecture for all Sonepar entities to allow homogeneous deployment of company's assets.
+		\begin{itemize}
+			\item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
+			\item Massive and systematic use of the Operator Pattern \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}.
+			\begin{itemize}
+				\item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
+				\item Deployments managed by ArgoCD and CI/CD.
+				\item Created various operators based on this API.
+			\end{itemize}
+			\item Managed and resolved performance issues with related teams.
+			\item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
+			\item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
+			\item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
+		\end{itemize}
+	
+	}
+	{sonepar.png}{0.8em} \\
+
+	\cvevent
+		{Aug. 2019}{Sept. 2021}
+		{e.Voyageurs SNCF -- Freelance}
+		{SRE/Architect}
+		{Lille (Remote)\color{cvred}}
+		{
+			Created a team to implement an "on-demand" Kubernetes stack to conduct a smooth migration of all SNCF components to AWS.
+			\begin{itemize}
+				\item Use of the Operator Pattern when relevant.
+				\item Created a REST API (Go) to request the creation of new namespaces into clusters (DynamoDB backend).
+				\item Created an operator (Go) listening this API and taking action on several events.
+				\item Clusters managed as code with GitOps/FluxCD.
+				\item AWS assets managed with Terraform.
+			\end{itemize}
+		}
+		{evoy.png}{0.8em} \\
+	
+	\cvevent
+		{Nov. 2017}{Aug. 2019}
+		{Ritmx (SNCF company) -- Freelance}
+		{SRE/Architect}
+		{Paris (half remote)\color{cvred}}
+		{
+			Led the migration of all existing Java applications to Kubernetes (Java).
+			\begin{itemize}
+				\item Supervised project teams.
+				\item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
+				\item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
+				\item Managed secrets using HashiCorp Vault.
+				\item Transitioned to Spring Cloud Config for managing application configurations.
+			\end{itemize}
+		}
+		{ritmx.png}{0.8em} \\
+		
+	\cvevent
+		{Nov. 2017}{Aug. 2019}
+		{Ritmx (SNCF company) -- Freelance}
+		{SRE/Architect}
+		{Paris (half remote)\color{cvred}}
+		{
+			Led the migration of all existing Java applications to Kubernetes (Java).
+			\begin{itemize}
+				\item Supervised project teams.
+				\item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
+				\item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
+				\item Managed secrets using HashiCorp Vault.
+				\item Transitioned to Spring Cloud Config for managing application configurations.
+			\end{itemize}
+		}
+		{ritmx.png}{0em} \\
+\end{supertabular}
+
+\begin{paracol}{1}
+\hbadness5000
+    
+\paracolbackgroundoptions{
+    \backgroundcolor{c[0](28pt,10.5pt)(0.5\columnsep,4pt)}[rgb]{1,1,1}
+    \backgroundcolor{c[1](0.5\columnsep,4pt)(4pt,4pt)}[rgb]{1,1,1}
+    \backgroundcolor{C[0](10000pt,10000pt)(0.5\columnsep,10000pt)}[rgb]{1,1,1}
+    \backgroundcolor{C[1](0.5\columnsep,10000pt)(10000pt,10000pt)}[rgb]{1,1,1}
+}
+
+
+
+\vspace{2em}
+
+\end{paracol}
+
+\end{document}
