@@ -15,6 +15,9 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{longtable}
 
+% Langage to generate
+\input{lang/en.tex}
+
 \newlength{\rightcolwidth}
 \newlength{\leftcolwidth}
 \setlength{\leftcolwidth}{0.3\textwidth}
@@ -37,6 +40,7 @@
 \input{includes/colors.tex}
 \input{includes/funcs.tex}
 \input{includes/links.tex}
+
 
 %------------------------------------------------------------------
 \title{CV}
@@ -61,8 +65,8 @@
 
 \header
   {\color{headerbluefont} \huge \bfseries Nicolas Maupu}
-  {\color{headerbluefont} \emph{\large SRE/DevOps, Kubernetes, Go and cloud expert}}
-  {\color{headerbluefont} \emph{{\bfseries Freelance} - \FPround\myage{\myage}{0}\myage+ years of experience}}
+  {\color{headerbluefont} \emph{\large \langHeaderJobTitle}}
+  {\color{headerbluefont} \emph{{\bfseries \langFreelance} - \FPround\myage{\myage}{0}\myage+ \langHeaderExperience}}
   {images/qr-github.png}
   {images/qr-linkedin.png}
   {headerblue}
@@ -86,41 +90,41 @@
 
 \small
 {\setasidefontcolour
-\bgtitle{maincolor}{maincolorlight}{About me}
+\bgtitle{maincolor}{maincolorlight}{\langLeftColAboutMe}
 \bigskip
 
 
 \begin{tabular}{ll}
   \faMale&Nicolas Maupu \\
-  \faGlobe&French \\
+  \faGlobe&\langLeftColAboutMeNationality \\
   \faBirthdayCake&1982 \\
   \faMapMarker&Paris \\
 \end{tabular}
 
 \bigskip
-\bgtitle{maincolor}{maincolorlight}{Languages}
+\bgtitle{maincolor}{maincolorlight}{\langLeftColLanguage}
 \bigskip
 
 \begin{minipage}[t]{\leftcolwidth}
   \begin{tabular}{l | ll}
-    \textbf{French}  & C2 & {\phantom{x}\footnotesize mother tongue} \\
-    \textbf{English}  & C1 &\pictofraction{maincolor}{4} \\
+    \textbf{\langLeftColLanguageFrench}  & C2 & {\phantom{x}\footnotesize \langLeftColLanguageMotherTongue} \\
+    \textbf{\langLeftColLanguageEnglish}  & C1 &\pictofraction{maincolor}{4} \\
   \end{tabular}
 \end{minipage}
 
 \bigskip
-\bgtitle{maincolor}{maincolorlight}{Interests}
+\bgtitle{maincolor}{maincolorlight}{\langLeftColInterests}
 \bigskip
 
-\bubblediagram{{\textbf{Cloud Expert}},  AWS, GCP, SRE/DevOPS, Azure, \textbf{Golang}, Architecture, \textbf{Kubernetes}}
+\bubblediagram{{\textbf{\langLeftColInterestsCloudExpert}},  AWS, GCP, SRE/DevOPS, Azure, \textbf{Golang}, \langLeftColInterestsArchitecture, \textbf{Kubernetes}}
 
 \bigskip
-\bgtitle{maincolor}{maincolorlight}{Skill highlights}
+\bgtitle{maincolor}{maincolorlight}{\langLeftColSkills}
 \bigskip
 
 \begin{minipage}[t]{0.3\textwidth}
 \begin{tabular}{r @{\hspace{0.5em}}l}
-   \multicolumn{2}{l}{\bfseries Clouds and containerization }\\
+   \multicolumn{2}{l}{\bfseries \langLeftColSkillsClouds}\\
    \hline
    \bgskill{bgskill}{bgskillfont}{Kubernetes} & \pictofraction{maincolor}{4}\Tstrut\\
    \bgskill{bgskill}{bgskillfont}{Amazon AWS} & \pictofraction{maincolor}{3}\TstrutMini\\
@@ -128,19 +132,19 @@
    \bgskill{bgskill}{bgskillfont}{Cloudflare} & \pictofraction{maincolor}{4}\TstrutMini\\
    \bgskill{bgskill}{bgskillfont}{Microsoft Azure} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
-   \multicolumn{2}{l}{\bfseries Infrastructure as Code}\\
+   \multicolumn{2}{l}{\bfseries \langLeftColIaC}\\
    \hline
    \bgskill{bgskill}{bgskillfont}{Git} & \pictofraction{maincolor}{5}\Tstrut\\
    \bgskill{bgskill}{bgskillfont}{GitOps} & \pictofraction{maincolor}{4}\TstrutMini\\
    \bgskill{bgskill}{bgskillfont}{Terraform} & \pictofraction{maincolor}{4}\TstrutMini\\
    \bgskill{bgskill}{bgskillfont}{Ansible} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
-   \multicolumn{2}{l}{\bfseries Monitoring}\\
+   \multicolumn{2}{l}{\bfseries \langLeftColMonitoring}\\
    \hline
    \bgskill{bgskill}{bgskillfont}{Prometheus} & \pictofraction{maincolor}{4}\Tstrut\\
    \bgskill{bgskill}{bgskillfont}{Thanos} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
-   \multicolumn{2}{l}{\bfseries Systems \& Languages}\\
+   \multicolumn{2}{l}{\bfseries \langLeftColSystemsAndLanguages}\\
    \hline
    \bgskill{bgskill}{bgskillfont}{Golang} & \pictofraction{maincolor}{4}\Tstrut\\
    \bgskill{bgskill}{bgskillfont}{Python} & \pictofraction{maincolor}{3}\TstrutMini\\
@@ -161,51 +165,42 @@
 \vspace{.5em}
 
 \begin{minipage}[t]{0.72\textwidth}
-\cvsection{Profesionnal objective}
-  \small Kubernetes and cloud expert with 16+ years of experience in designing and managing highly available and scalable production platforms.
-  Looking for an opportunity to join the chess industry to ally my passion for the game and my professional life. Passionate about technology, I am excited to use all my knowledge to help you thrive.
+\cvsection{\langMainProfessionalObj}
+  \small\langMainProfessionalObjContent
 \end{minipage}
 
 \vspace{1.5em}
 
 \begin{minipage}[t]{0.72\textwidth}
-\cvsection{Latest experiences at a glance}
+\cvsection{\langMainLatestExp}
   \begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} P{0.2\textwidth} }
     \cvevent
-      {Oct. 2021}{Jan. 2023}
-      {\textbf{Sonepar} $\cdot$ Freelance}
+      {\langOct 2021}{\langFeb 2023}
+      {\textbf{Sonepar} $\cdot$ \langFreelance}
       {SRE/Architect}
-      {Paris (Remote)\color{cvred}}
-      {
-          Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
-      }
+      {Paris (\langRemote)\color{cvred}}
+      {\langMainLatestExpSonepar}
       {images/sonepar.png}{0.8em} \\
     \cvevent
-      {Aug. 2019}{Sept. 2021}
-      {\textbf{e.Voyageurs SNCF} $\cdot$ Freelance}
+      {\langAug 2019}{\langSep 2021}
+      {\textbf{e.Voyageurs SNCF} $\cdot$ \langFreelance}
       {SRE/Architect}
-      {Lille (Remote)\color{cvred}}
-      {
-        Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
-        }
-        {images/evoy.png}{0.8em} \\
+      {Lille (\langRemote)\color{cvred}}
+      {\langMainLatestExpEvoy}
+      {images/evoy.png}{0.8em} \\
     \cvevent
-      {Nov. 2017}{Aug. 2019}
-      {\textbf{Ritmx} $\cdot$ Freelance}
+      {\langNov 2017}{\langAug 2019}
+      {\textbf{Ritmx} $\cdot$ \langFreelance}
       {SRE/Architect}
-      {Paris (half remote)\color{cvred}}
-      {
-        Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
-      }
+      {Paris (\langPartialRemote)\color{cvred}}
+      {\langMainLatestExpRitmx}
       {images/ritmx.png}{0.8em} \\
     \cvevent
-      {Sept. 2016}{Oct. 2017}
-      {\textbf{Mirakl} $\cdot$ Freelance}
+      {\langSep 2016}{\langOct 2017}
+      {\textbf{Mirakl} $\cdot$ \langFreelance}
       {SRE/Architect}
       {Paris \color{cvred}}
-      {
-        Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
-      }
+      {\langMainLatestExpMirakl}
       {images/mirakl.png}{-0.8em} \\
   \end{tabular}
 \end{minipage}
@@ -216,25 +211,25 @@
   {
     \begin{minipage}[t]{0.5\textwidth}
     % -----------------
-    \cvsection{Degrees}
+    \cvsection{\langMainDegrees}
     \begin{tabular}{r p{0.8\textwidth} c}
-      \cvdegree{2007}{Master}{Analyses des Systèmes Stratégiques}{Awarded with high honours -- Versailles} \\
-      \cvdegree{2003}{DUT}{G\'{e}nie informatique}{Awarded with honours -- V\'{e}lizy} \\
-      \cvdegree{2001}{Bac g\'{e}n\'{e}ral}{S\'{e}rie S, sp\'{e}cialit\'{e} math\'{e}matiques}{D\'{e}ville-les-Rouen} \\
+      \cvdegree{2007}{\langMainDegreesMaster}{\langMainDegreesMasterName}{\langMainDegreesAwardHighHonours -- Versailles} \\
+      \cvdegree{2003}{\langMainDegreesDUT}{\langMainDegreesDUTName}{\langMainDegreesAwardHonours -- V\'{e}lizy} \\
+      \cvdegree{2001}{\langMainDegreesBac}{\langMainDegreesBacName}{D\'{e}ville-les-Rouen} \\
     \end{tabular}
 
     \vspace{1.5em}
 
     % -----------------
-    \cvsection{Miscellaneous}
+    \cvsection{\langMainMisc}
     \small
     \begin{itemize}
-      \item {\bfseries{2013}} (7 months), {\bfseries{2016}} (7 months) and {\bfseries{2023}} (7 months): Travel around the world.
-      \item Open source projects and experimentations:
+      \item \langMainMiscTravels
+      \item \langMainMiscOpenSource
       \begin{itemize}
-        \item \emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject secret resource based on Hashicorp Vault) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}
-        \item \emph{\bfseries{freenas-provisioner}} creator (Kubernetes operator (Go) to dynamically provision a NFS volume from a freenas instance) \\ {\footnotesize \url{https://github.com/nmaupu/freenas-provisioner}}
-        \item Reverse engineering work on iOt devices \\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}
+        \item \langMainMiscOpenSourceVaultSecret
+        \item \langMainMiscOpenSourceFreenasProv
+        \item \langMainMiscOpenSourceYokis
       \end{itemize}
     \end{itemize}
 
@@ -243,15 +238,15 @@
     \begin{minipage}[t]{0.19\textwidth}
 
     % -----------------
-    \cvsection{Hobbies}
+    \cvsection{\langMainHobbies}
       \begin{tabular}[t]{cc}
       % usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
-      \hobbyicon{\color{iconcolour}\faPlane}{Travel}{cvgreen}{\iconsize}{2em} &
-      \hobbyicon{\color{iconcolour}\faCamera}{Photo}{cvorange}{\iconsize}{2em} \\
-      \hobbyicon{\color{iconcolour}\faWrench}{DIY}{cvpurple}{\iconsize}{2em} &
-      \hobbyicon{\color{iconcolour}\faChessPawn}{Chess}{lightgray}{\iconsize}{2em} \\
-      \hobbyicon{\color{iconcolour}\faGamepad}{Games}{red}{\iconsize}{2em} &
-      \hobbyicon{\color{iconcolour}\faMountain}{Climbing}{cyan}{\iconsize}{2em} \\
+      \hobbyicon{\color{iconcolour}\faPlane}{\langMainHobbiesTravel}{cvgreen}{\iconsize}{2em} &
+      \hobbyicon{\color{iconcolour}\faCamera}{\langMainHobbiesPhoto}{cvorange}{\iconsize}{2em} \\
+      \hobbyicon{\color{iconcolour}\faWrench}{\langMainHobbiesDIY}{cvpurple}{\iconsize}{2em} &
+      \hobbyicon{\color{iconcolour}\faChessPawn}{\langMainHobbiesChess}{lightgray}{\iconsize}{2em} \\
+      \hobbyicon{\color{iconcolour}\faGamepad}{\langMainHobbiesGames}{red}{\iconsize}{2em} &
+      \hobbyicon{\color{iconcolour}\faMountain}{\langMainHobbiesClimbing}{cyan}{\iconsize}{2em} \\
       \end{tabular}
     \end{minipage}
     } \\
