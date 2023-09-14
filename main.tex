@@ -1,21 +1,60 @@
+% From https://github.com/latex-ninja/hipster-cv with a lot of modifications
 \documentclass[darkhipster]{hipstercv}
 % available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight
 \usepackage[utf8]{inputenc}
 \usepackage[default]{raleway}
-\usepackage[margin=1cm,bottom=0.8cm, a4paper,includefoot,heightrounded]{geometry}
+\usepackage[margin=1cm,a4paper,includefoot,heightrounded]{geometry}
 \usepackage{datenumber,fp}
 \usepackage{changepage}
 \usepackage{makecell}
 \usepackage{url}
 \usepackage{fontawesome5}
 \usepackage[most]{tcolorbox}
-\usepackage{supertabular,booktabs}
 \usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{longtable}
+\usepackage{smartdiagram}
+
+% smartdiagramset options overriden from sty package
+\smartdiagramset{
+    bubble center node font = \footnotesize,
+    bubble node font = \footnotesize,
+    % specifies the minimum size of the bubble center node
+    bubble center node size = 0.5cm,
+    %  specifies the minimum size of the bubbles
+    bubble node size = 0.5cm,
+    % specifies which is the distance among the bubble center node and the other bubbles
+    distance center/other bubbles = 0.3cm,
+    % sets the distance from the text to the border of the bubble center node
+    distance text center bubble = 0.5cm,
+    % set center bubble color
+    bubble center node color = pblue!35!white,
+    % define the list of colors usable in the diagram
+    set color list = {materialcyan!50!white, orange!50!white, green!50!white, materialorange!50!white, materialteal!50!white, materialamber!50!white, materialindigo!50!white, materialgreen!50!white, materiallime!50!white},
+    % sets the opacity at which the bubbles are shown
+    bubble fill opacity = 0.6,
+    % sets the opacity at which the bubble text is shown
+    bubble text opacity = 1,
+    description title text width=0.5cm,
+    description title width=0.5cm,
+    description width=5cm,
+    description text width=5cm,
+    descriptive items y sep =1.25,
+    back arrow distance = 0,
+    back arrow disabled = true,
+    border color = white
+}
+%-------------------------------
+
+\renewcommand{\bubblediagram}[1]{\smartdiagram[bubble diagram]{#1}}
+
 \hypersetup{
     colorlinks,
     linkcolor={red!50!black},
     citecolor={blue!50!black},
-    urlcolor={maincolor!45!black}
+    urlcolor={maincolor!55!black}
 }
 
 \urlstyle{sf}
@@ -47,10 +86,11 @@
 
 \definecolor{maincolor}{HTML}{0077b5}%
 \definecolor{maincolorlight}{HTML}{e6f2f8}%
-\definecolor{maincolorfont}{HTML}{ffffff}%
 \definecolor{maincolorlightfont}{HTML}{000000}%
 \definecolor{headerblue}{HTML}{0077b5}% override default color from template
 \definecolor{headerbluefont}{HTML}{ffffff}%
+\colorlet{bgskill}{lightgray!55!white}%
+\colorlet{bgskillfont}{black!80!white}%
 
 \renewcommand{\setasidefontcolour}{
 	\color{black}
@@ -77,6 +117,24 @@
 	\vspace{#8} &
 	\raisebox{-0.7\height}{\includegraphics[height=1cm]{#7}}
 }
+
+\ExplSyntaxOn
+\newcommand{\cvtags}[1] {
+	\clist_map_inline:nn { #1 }
+	{
+		\cvtag{##1} % Apply \cvtag to each keyword
+	}
+}
+\ExplSyntaxOff
+
+\newcommand{\cveventdetailed}[9]{
+	{\small #1} & 
+	{#2 $\cdot$ \small{{#4 ~\faMapMarker}}}\vspace{.5em}\newline
+	{\color{black!70}\footnotesize #5\vspace{#9}} &
+	{\raisebox{-0.7\height}{\includegraphics[width=2.5cm]{#6}}} \vspace{#7}
+	{\par \small \cvtags{#8}}
+}
+
 
 \renewcommand{\header}[9]{
 \tikz[remember picture,overlay] {%
@@ -126,11 +184,6 @@
 \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
 \newcommand\TstrutMini{\rule{0pt}{2.3ex}}         % = `top' strut
 
-%\newenvironment{absolutelynopagebreak}
-%  {\par\nobreak\vfil\penalty0\vfilneg
-%   \vtop\bgroup}
-%  {\par\xdef\tpd{\the\prevdepth}\egroup
-%   \prevdepth=\tpd}
 
 %------------------------------------------------------------------ Variables
 
@@ -199,10 +252,6 @@
 \faMapMarker&Paris \\
 \end{tabular}
 
-%\bigskip
-%\bg{maincolor}{maincolorfont}{Areas of specialization} \\
-%Kubernetes  ~•~ Cloud ~•~ SRE/DevOPS
-
 \bigskip
 \bgtitle{maincolor}{maincolorlight}{Languages}
 \bigskip
@@ -230,30 +279,30 @@
 \begin{tabular}{r @{\hspace{0.5em}}l}
      \multicolumn{2}{l}{\bfseries Clouds and containerization }\\
      \hline
-     \bgskill{lightgray}{black}{Kubernetes} & \pictofraction{maincolor}{4}\Tstrut\\
-     \bgskill{lightgray}{black}{Amazon AWS} & \pictofraction{maincolor}{3}\TstrutMini\\
-     \bgskill{lightgray}{black}{Google GCP} & \pictofraction{maincolor}{4}\TstrutMini\\
-     \bgskill{lightgray}{black}{Cloudflare} & \pictofraction{maincolor}{4}\TstrutMini\\
-     \bgskill{lightgray}{black}{Microsoft Azure} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+     \bgskill{bgskill}{bgskillfont}{Kubernetes} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{bgskill}{bgskillfont}{Amazon AWS} & \pictofraction{maincolor}{3}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Google GCP} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Cloudflare} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Microsoft Azure} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
      \multicolumn{2}{l}{\bfseries Infrastructure as Code}\\
      \hline
-     \bgskill{lightgray}{black}{Git} & \pictofraction{maincolor}{5}\Tstrut\\
-     \bgskill{lightgray}{black}{GitOps} & \pictofraction{maincolor}{4}\TstrutMini\\
-     \bgskill{lightgray}{black}{Terraform} & \pictofraction{maincolor}{4}\TstrutMini\\
-     \bgskill{lightgray}{black}{Ansible} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+     \bgskill{bgskill}{bgskillfont}{Git} & \pictofraction{maincolor}{5}\Tstrut\\
+     \bgskill{bgskill}{bgskillfont}{GitOps} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Terraform} & \pictofraction{maincolor}{4}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Ansible} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
      \multicolumn{2}{l}{\bfseries Monitoring}\\
      \hline
-     \bgskill{lightgray}{black}{Prometheus} & \pictofraction{maincolor}{4}\Tstrut\\
-     \bgskill{lightgray}{black}{Thanos} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+     \bgskill{bgskill}{bgskillfont}{Prometheus} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{bgskill}{bgskillfont}{Thanos} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 
      \multicolumn{2}{l}{\bfseries Systems \& Languages}\\
      \hline
-     \bgskill{lightgray}{black}{Golang} & \pictofraction{maincolor}{4}\Tstrut\\
-     \bgskill{lightgray}{black}{Python} & \pictofraction{maincolor}{3}\TstrutMini\\
-     \bgskill{lightgray}{black}{Bash} & \pictofraction{maincolor}{5}\TstrutMini\\
-     \bgskill{lightgray}{black}{GNU/Linux} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
+     \bgskill{bgskill}{bgskillfont}{Golang} & \pictofraction{maincolor}{4}\Tstrut\\
+     \bgskill{bgskill}{bgskillfont}{Python} & \pictofraction{maincolor}{3}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{Bash} & \pictofraction{maincolor}{5}\TstrutMini\\
+     \bgskill{bgskill}{bgskillfont}{GNU/Linux} & \pictofraction{maincolor}{4}\TstrutMini\\[2ex]
 \end{tabular}
 
 %\dashrule{}{}
@@ -278,7 +327,7 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 
 \begin{minipage}[t]{0.72\textwidth}
 \cvsection{Latest experiences at a glance}
-	\begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} c }
+	\begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} P{0.2\textwidth} }
 		 \cvevent
 			{Oct. 2021}{Jan. 2023}
 			{\textbf{Sonepar} $\cdot$ Freelance}
@@ -365,40 +414,46 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 
 \end{paracol}
 
-\small
-\cvsection{Detailed Work Experiences}
-\begin{supertabular}{p{1.5cm}| p{0.4\textwidth} c}
-    \cvevent
-	{Oct. 2021}{Jan. 2023}
-	{Sonepar -- Freelance}
-	{SRE/Architect}
-	{Paris (Remote)\color{cvred}}
-	{
-		Prepared and implemented a multi-tenants architecture for all Sonepar entities to allow homogeneous deployment of company's assets.
-		\begin{itemize}
-			\item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
-			\item Massive and systematic use of the Operator Pattern \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}.
-			\begin{itemize}
-				\item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
-				\item Deployments managed by ArgoCD and CI/CD.
-				\item Created various operators based on this API.
-			\end{itemize}
-			\item Managed and resolved performance issues with related teams.
-			\item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
-			\item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
-			\item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
-		\end{itemize}
-	
-	}
-	{sonepar.png}{0.8em} \\
 
-	\cvevent
-		{Aug. 2019}{Sept. 2021}
+
+% ----- End of the main page.
+% ----- Below is only detailed stuff to exclude if need be.
+
+
+
+\cvsection{Detailed Work Experiences}
+\begin{longtable}{p{1.7cm}| p{0.67\textwidth} P{0.2\textwidth}}
+	\cveventdetailed
+		{Oct. 2021\newline Jan. 2023}
+		{Sonepar -- Freelance}
+		{SRE/Architect}
+		{Paris (Remote)\color{cvred}}
+		{
+			Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
+			\begin{itemize}
+				\item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
+				\item Massive and systematic use of the Operator Pattern \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}.
+				\begin{itemize}
+					\item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
+					\item Deployments managed by ArgoCD and CI/CD.
+					\item Created various operators based on this API.
+				\end{itemize}
+				\item Managed and resolved performance issues with related teams.
+				\item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
+				\item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
+				\item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
+			\end{itemize}
+		
+		}
+		{sonepar.png}{0.5em}{Kubernetes,Azure,GCP,AKS,GKE,IaC,Golang,ArgoCD,Terraform,Velero,Prometheus,Thanos,GNU/Linux}
+		{.3em} \\
+	\cveventdetailed
+		{Aug. 2019\newline Sept. 2021}
 		{e.Voyageurs SNCF -- Freelance}
 		{SRE/Architect}
 		{Lille (Remote)\color{cvred}}
 		{
-			Created a team to implement an "on-demand" Kubernetes stack to conduct a smooth migration of all SNCF components to AWS.
+			Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
 			\begin{itemize}
 				\item Use of the Operator Pattern when relevant.
 				\item Created a REST API (Go) to request the creation of new namespaces into clusters (DynamoDB backend).
@@ -407,15 +462,15 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 				\item AWS assets managed with Terraform.
 			\end{itemize}
 		}
-		{evoy.png}{0.8em} \\
-	
-	\cvevent
-		{Nov. 2017}{Aug. 2019}
+		{evoy.png}{0.3em}{Kubernetes,Docker,Terraform,AWS,EKS,IaC,Golang,GitOps,FluxCD,Datadog,Velero,GNU/Linux}
+		{.7em} \\
+	\cveventdetailed
+		{Nov. 2017\newline Aug. 2019}
 		{Ritmx (SNCF company) -- Freelance}
 		{SRE/Architect}
 		{Paris (half remote)\color{cvred}}
 		{
-			Led the migration of all existing Java applications to Kubernetes (Java).
+			Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
 			\begin{itemize}
 				\item Supervised project teams.
 				\item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
@@ -424,40 +479,96 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 				\item Transitioned to Spring Cloud Config for managing application configurations.
 			\end{itemize}
 		}
-		{ritmx.png}{0.8em} \\
-		
-	\cvevent
-		{Nov. 2017}{Aug. 2019}
-		{Ritmx (SNCF company) -- Freelance}
+		{ritmx.png}{1.1em}{Kubernetes,Docker,GCP,GKE,kubeadm,Golang,Terraform,Packer,Ansible,IaC,Git,GNU/Linux}
+		{.7em} \\
+	\cveventdetailed
+		{Sept. 2016\newline Oct. 2017}
+		{Mirakl -- Freelance}
 		{SRE/Architect}
-		{Paris (half remote)\color{cvred}}
+		{Paris\color{cvred}}
 		{
-			Led the migration of all existing Java applications to Kubernetes (Java).
+			Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
 			\begin{itemize}
-				\item Supervised project teams.
-				\item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
-				\item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
-				\item Managed secrets using HashiCorp Vault.
-				\item Transitioned to Spring Cloud Config for managing application configurations.
+				\item Implemented Kubernetes clusters to ensure the platform's future (migrating from mono-tenant to multi-tenant microservices (Java)).
+				\item Containerized applications, logs handling (fluentd), etc.
+				\item Deployed the entire infrastructure using Terraform and Ansible.
+				\item Cultivated a DevOps best practices culture and continuous deployment awareness within teams operating in a microservices environment.
+				\item Maintained operational conditions, optimizing performance, conducting profiling, and scaling as needed.
 			\end{itemize}
 		}
-		{ritmx.png}{0em} \\
-\end{supertabular}
-
-\begin{paracol}{1}
-\hbadness5000
-    
-\paracolbackgroundoptions{
-    \backgroundcolor{c[0](28pt,10.5pt)(0.5\columnsep,4pt)}[rgb]{1,1,1}
-    \backgroundcolor{c[1](0.5\columnsep,4pt)(4pt,4pt)}[rgb]{1,1,1}
-    \backgroundcolor{C[0](10000pt,10000pt)(0.5\columnsep,10000pt)}[rgb]{1,1,1}
-    \backgroundcolor{C[1](0.5\columnsep,10000pt)(10000pt,10000pt)}[rgb]{1,1,1}
-}
-
-
-
-\vspace{2em}
-
-\end{paracol}
+		{mirakl.png}{.15em}{Kubernetes,Docker,AWS,GCP,Terraform,Packer,Ansible,Golang,IaC,Git,GNU/Linux}
+		{0em} \\
+	\cveventdetailed
+		{Sept. 2013\newline Feb. 2016 \newline\newline and \newline\newline May 2012 \newline Feb. 2013}
+		{Orange Vallée (Orange group) -- Freelance}
+		{SRE/Architect}
+		{Châtillon (Haut-de-Seine)\color{cvred}}
+		{
+			Responsible for the technical management of the infrastructure for the Libon project at \emph{Orange Vallée}, with a specific focus on the Java/JEE backend. Two distinct roles:
+			\begin{enumerate}
+				\item Ensured the operational stability of the Libon application (on-call duties, handling production incidents, performance enhancements, etc.).
+				\item Managed the build and strengthened the infrastructure, ensuring scalability of existing and future components, standardizing and creating sustainable inter-team processes.
+			\end{enumerate}
+			Led projects on the following topics:
+			\begin{itemize}
+				\item Architecture design for the Java/JEE components.
+				\item Datacenter migration (Java/JEE foundation, system, storage, and hardware).
+				\item Process industrialization and standardization (Puppet for infrastructure build and Python with Fabric framework for apps' deployment).
+				\item Overhauled the monitoring/metrology system.
+				\item Acted as a technical expert in the following areas: Java/JEE and JVM tuning, Puppet, SSL, storage (iSCSI SAN), GNU/Linux. Advocated for best practices in these domains.
+				\item Operated in a DevOps environment and followed DevOps methodologies.
+			\end{itemize}
+		}
+		{orange.png}{1.4em}{architecture,Apache,Tomcat,BigIP,SAN,python,puppet,foreman,Shinken,Grafana,Kibana,Elasticsearch,Git,IaC,GNU/Linux}
+		{0em} \\
+	\cveventdetailed
+		{June 2011\newline May 2012}
+		{Excilys Group}
+		{SRE/Architect}
+		{Cachan (Haut-de-Seine)\color{cvred}}
+		{
+			Managed the evolution of the outdated internal infrastructure of the Excilys Group.
+			\begin{itemize}
+				\item Selected the solution (VMware) and hardware (Dell m1000e blades chassis, PowerVault iSCSI SAN).
+				\item Led the project and provided training on VMware and Dell hardware.
+				\item Designed the architecture, conducted technical and budget validation.
+				\item Implemented the solution (installation, monitoring, backups, deliveries, etc.).
+			\end{itemize}
+		}
+		{excilys.png}{0.3em}{VMware,CentOS,Tomcat,Apache,JBoss,MySQL,Git,SAN}
+		{1.5em} \\
+	\cveventdetailed
+		{June 2010\newline June 2011}
+		{Fia-Net / Excilys consulting}
+		{SRE/Architect}
+		{Paris\color{cvred}}
+		{
+			Designed and implemented a highly available virtualized architecture to host the Kwixo application (peer-to-peer money transfers and online payments).
+			\begin{itemize}
+				\item Designed and implemented the architecture (Solaris 10 and zones, Apache Tomcat).
+				\item Managed application delivery processes with a focus on standardization and industrialization.
+				\item Deployed and configured monitoring and backups. Handled performance improvements (JVM tuning).
+				\item Enacted a DevOps approach.
+			\end{itemize}
+		}
+		{fia-net.jpg}{1.5em}{CentOS,Solaris 10,Apache,Tomcat,Java/JEE,ActiveMQ,CouchDB,Centreon,Nagios,Git}
+		{1.5em} \\
+	\cveventdetailed
+		{May 2007\newline June 2010}
+		{Excilys Group}
+		{SRE/Architect}
+		{Cachan (Haut-de-Seine)\color{cvred}}
+		{
+			Various missions, including:
+			\begin{itemize}
+				\item Managed Excilys and Capico (the group's e-learning application in JEE) infrastructures on an Apache stack (\emph{mod\_jk}), \emph{JBoss}, and \emph{MySQL}.
+				\item Trained other Excilys group consultants on various topics (systems and networks, monitoring, virtualization, JVM profiling, Tomcat, and Apache).
+				\item In 2009: mission at Weldom (Leroy Merlin group) to design and implement a highly available virtualized architecture (\emph{OpenVz}) for hosting and maintaining store order management applications.
+				\item Various ad-hoc missions for analyzing JVM performance issues (HotSpot) in Java applications.
+			\end{itemize}
+		}
+		{excilys.png}{0em}{Tomcat,Apache,JBoss,Java/JEE,JMX,OpenVz,Nagios,Zabbix,JMeter}
+		{0em} \\
+\end{longtable}
 
 \end{document}
