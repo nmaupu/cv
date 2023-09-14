@@ -1,0 +1,32 @@
+\usepackage{smartdiagram}
+% smartdiagramset options overriden from sty package
+\smartdiagramset{
+  bubble center node font = \footnotesize,
+  bubble node font = \footnotesize,
+  % specifies the minimum size of the bubble center node
+  bubble center node size = 0.5cm,
+  %  specifies the minimum size of the bubbles
+  bubble node size = 0.5cm,
+  % specifies which is the distance among the bubble center node and the other bubbles
+  distance center/other bubbles = 0.3cm,
+  % sets the distance from the text to the border of the bubble center node
+  distance text center bubble = 0.5cm,
+  % set center bubble color
+  bubble center node color = pblue!35!white,
+  % define the list of colors usable in the diagram
+  set color list = {materialcyan!50!white, orange!50!white, green!50!white, materialorange!50!white, materialteal!50!white, materialamber!50!white, materialindigo!50!white, materialgreen!50!white, materiallime!50!white},
+  % sets the opacity at which the bubbles are shown
+  bubble fill opacity = 0.6,
+  % sets the opacity at which the bubble text is shown
+  bubble text opacity = 1,
+  description title text width=0.5cm,
+  description title width=0.5cm,
+  description width=5cm,
+  description text width=5cm,
+  descriptive items y sep =1.25,
+  back arrow distance = 0,
+  back arrow disabled = true,
+  border color = white
+}
+%-------------------------------
+\renewcommand{\bubblediagram}[1]{\smartdiagram[bubble diagram]{#1}}

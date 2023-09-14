@@ -6,7 +6,7 @@
   - Create a directory `<path>/tex/latex`
   - Add this directory into MikTex root directories
 
-Under debian, use the following
+Under debian, use the following:
 ```
 apt update
 apt install texlive \

@@ -1,0 +1,97 @@
+% \cvdegree{2015}{Docker}{Administration and Operation}{foo} \\
+\renewcommand{\cvdegree}[4]{%
+  {#1} & %
+  \textbf{#2} \small {#3} \newline %
+  {\color{black!70}\scriptsize #4} \vspace{0.5em} %
+}
+
+\newcommand{\cvsection}[1] {%
+  \section*{\textbf{#1}}
+}
+
+\renewcommand{\pictofraction}[2]{%
+  \ifthenelse{\equal{#2}{0}}{}{\pgfmathparse{#2 - 1}\foreach \n in {0,...,\pgfmathresult}{\icon{\faCircle}{#1}{\tiny}}}%
+  \ifthenelse{\equal{#2}{5}}{}{\pgfmathparse{5 - #2 - 1}\foreach \n in {0,...,\pgfmathresult}{\icon{\faCircle}{black!30}{\tiny}}}%
+}
+
+% \hobbyicon{\color{iconcolour}\faPlane}{Travels}{cvgreen}{\iconsize}{2em}
+\renewcommand{\hobbyicon}[5]{%
+  \begin{tikzpicture}%
+    \draw[draw=none,fill=#3,opacity=.55] (0,0) circle (0.58);%
+    \node[](icon) at (0,0) {#4#1};%
+    \node[below=#5,align=center] at (icon) {#2};%
+  \end{tikzpicture}
+}
+
+\renewcommand{\cvevent}[8]{%
+  {\small #1 \newline #2} &
+  {#3 $\cdot$ \small{{#5 ~\faMapMarker}}}\newline
+  {\color{black!70}\footnotesize #6}
+  \vspace{#8} &
+  \raisebox{-0.7\height}{\includegraphics[height=1cm]{#7}}
+}
+
+\ExplSyntaxOn
+\newcommand{\cvtags}[1] {
+  \clist_map_inline:nn { #1 }
+  {
+    \cvtag{##1} % Apply \cvtag to each keyword
+  }
+}
+\ExplSyntaxOff
+
+\newcommand{\cveventdetailed}[9]{
+  {\small #1} &
+  {#2 $\cdot$ \small{{#4 ~\faMapMarker}}}\vspace{.5em}\newline
+  {\color{black!70}\footnotesize #5\vspace{#9}} &
+  {\raisebox{-0.7\height}{\includegraphics[width=2.5cm]{#6}}} \vspace{#7}
+  {\par \small \cvtags{#8}}
+}
+
+\renewcommand{\header}[9]{
+  \tikz[remember picture,overlay] {%
+  \node[rectangle, fill=#6, anchor=north, minimum width=\paperwidth, minimum height=5cm](header) at (current page.north){};%
+  \node[left=#9 of header.north, anchor=east](name) at (header.east) {\fontfamily{\sfdefault}\selectfont #2};%
+  \node[anchor=south east](degree) at (name.north east) {\fontfamily{\sfdefault}\selectfont #1};%
+  \node[anchor=north east](descr) at (name.south east) {\fontfamily{\sfdefault}\selectfont #3};%
+  \node (leftqr)   [right=#7 of header.west, inner sep=0, outer sep=0] at (0,0) {\includegraphics[height=4cm]{#4}};%
+  \node (rightqr) [right=#8 of leftqr.west, inner sep=0, outer sep=0] at (0,0) {\includegraphics[height=4cm]{#5}};%
+  }%
+  \vspace{1.5cm}%
+}
+
+\renewcommand{\paracolbackgroundoptions}{
+  \backgroundcolor{c[0](4pt,4pt)(0.5\columnsep,4pt)}[HTML]{e6f2f8}
+  \backgroundcolor{c[1](0.5\columnsep,4pt)(4pt,4pt)}[HTML]{ffffff}
+  \backgroundcolor{C[0](10000pt,10000pt)(0.5\columnsep,10000pt)}[HTML]{e6f2f8}
+  \backgroundcolor{C[1](0.5\columnsep,10000pt)(10000pt,10000pt)}[HTML]{ffffff}
+}
+
+\renewcommand{\bg}[3]{
+  \colorbox{#1}{\bfseries\color{#2}#3}
+}
+\newcommand{\bgtitle}[3]{%
+  \begin{tikzpicture}[x=1cm,y=1cm]%
+    \node at (0,0) [draw=none, fill=#1, rectangle, inner sep=0, outer sep=0, minimum width=55mm, minimum height=1.4mm]{};%
+    \node at (0,0) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large #3\hspace*{0.2cm}};%
+  \end{tikzpicture}%
+}
+%\newcommand{\bgtitle}[3]{%
+%  \begin{tikzpicture}[x=1cm,y=1cm]%
+%    \node at (0,0) [draw=none, fill=#1, rectangle, left, inner sep=0, outer sep=0, minimum width=12mm, minimum height=1.4mm]{};%
+%    \node at (0,0) [draw=none, rectangle, right]{\hspace*{0.2cm}\bfseries\large #3};%
+%  \end{tikzpicture}%
+%}
+\newcommand{\bgskill}[3]{%
+  %\tikz \node at (0,0) [halign=right, anchor=center, draw=none, fill=#1, rectangle, minimum width=30mm,text=#2]{#3};%
+  \colorbox{#1}{\bfseries\color{#2}#3}
+}
+\renewcommand{\bgupper}[3]{
+  \colorbox{#1}{\color{#2}\huge\bfseries\textsc{#3}}
+}
+
+% Define typographic struts, as suggested by Claudio Beccari
+%   in an article in TeX and TUG News, Vol. 2, 1993.
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\newcommand\TstrutMini{\rule{0pt}{2.3ex}}         % = `top' strut
