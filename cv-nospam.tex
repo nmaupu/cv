@@ -73,13 +73,13 @@
 
 % \cvdegree{2015}{Docker}{Administration and Operation}{foo} \\
 \renewcommand{\cvdegree}[4]{%
-	{#1} & %
-	\textbf{#2} \small {#3} \newline %
-	{\color{black!70}\scriptsize #4} \vspace{0.5em} %
+    {#1} & %
+    \textbf{#2} \small {#3} \newline %
+    {\color{black!70}\scriptsize #4} \vspace{0.5em} %
 }
 
 \newcommand{\cvsection}[1] {%
-	\section*{\textbf{#1}}
+    \section*{\textbf{#1}}
 }%
 
 % -----
@@ -93,7 +93,7 @@
 \colorlet{bgskillfont}{black!80!white}%
 
 \renewcommand{\setasidefontcolour}{
-	\color{black}
+    \color{black}
 }
 
 \renewcommand{\pictofraction}[2]{%
@@ -103,36 +103,36 @@
 
 % \hobbyicon{\color{iconcolour}\faPlane}{Travels}{cvgreen}{\iconsize}{2em}
 \renewcommand{\hobbyicon}[5]{%
-	\begin{tikzpicture}%
-		\draw[draw=none,fill=#3,opacity=.55] (0,0) circle (0.58);%
-		\node[](icon) at (0,0) {#4#1};%
-		\node[below=#5,align=center] at (icon) {#2};%
-	\end{tikzpicture}
+    \begin{tikzpicture}%
+        \draw[draw=none,fill=#3,opacity=.55] (0,0) circle (0.58);%
+        \node[](icon) at (0,0) {#4#1};%
+        \node[below=#5,align=center] at (icon) {#2};%
+    \end{tikzpicture}
 }
 
 \renewcommand{\cvevent}[8]{%
-	{\small #1 \newline #2} & 
-	{#3 $\cdot$ \small{{#5 ~\faMapMarker}}}\newline
-	{\color{black!70}\footnotesize #6}
-	\vspace{#8} &
-	\raisebox{-0.7\height}{\includegraphics[height=1cm]{#7}}
+    {\small #1 \newline #2} &
+    {#3 $\cdot$ \small{{#5 ~\faMapMarker}}}\newline
+    {\color{black!70}\footnotesize #6}
+    \vspace{#8} &
+    \raisebox{-0.7\height}{\includegraphics[height=1cm]{#7}}
 }
 
 \ExplSyntaxOn
 \newcommand{\cvtags}[1] {
-	\clist_map_inline:nn { #1 }
-	{
-		\cvtag{##1} % Apply \cvtag to each keyword
-	}
+    \clist_map_inline:nn { #1 }
+    {
+        \cvtag{##1} % Apply \cvtag to each keyword
+    }
 }
 \ExplSyntaxOff
 
 \newcommand{\cveventdetailed}[9]{
-	{\small #1} & 
-	{#2 $\cdot$ \small{{#4 ~\faMapMarker}}}\vspace{.5em}\newline
-	{\color{black!70}\footnotesize #5\vspace{#9}} &
-	{\raisebox{-0.7\height}{\includegraphics[width=2.5cm]{#6}}} \vspace{#7}
-	{\par \small \cvtags{#8}}
+    {\small #1} &
+    {#2 $\cdot$ \small{{#4 ~\faMapMarker}}}\vspace{.5em}\newline
+    {\color{black!70}\footnotesize #5\vspace{#9}} &
+    {\raisebox{-0.7\height}{\includegraphics[width=2.5cm]{#6}}} \vspace{#7}
+    {\par \small \cvtags{#8}}
 }
 
 
@@ -156,26 +156,26 @@
 }
 
 \renewcommand{\bg}[3]{
-	\colorbox{#1}{\bfseries\color{#2}#3}
+    \colorbox{#1}{\bfseries\color{#2}#3}
 }
 \newcommand{\bgtitle}[3]{%
-	\begin{tikzpicture}[x=1cm,y=1cm]%
-		\node at (0,0) [draw=none, fill=#1, rectangle, inner sep=0, outer sep=0, minimum width=55mm, minimum height=1.4mm]{};%
-		\node at (0,0) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large #3\hspace*{0.2cm}};%
-	\end{tikzpicture}%
+    \begin{tikzpicture}[x=1cm,y=1cm]%
+        \node at (0,0) [draw=none, fill=#1, rectangle, inner sep=0, outer sep=0, minimum width=55mm, minimum height=1.4mm]{};%
+        \node at (0,0) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large #3\hspace*{0.2cm}};%
+    \end{tikzpicture}%
 }
 %\newcommand{\bgtitle}[3]{%
-%	\begin{tikzpicture}[x=1cm,y=1cm]%
-%		\node at (0,0) [draw=none, fill=#1, rectangle, left, inner sep=0, outer sep=0, minimum width=12mm, minimum height=1.4mm]{};%
-%		\node at (0,0) [draw=none, rectangle, right]{\hspace*{0.2cm}\bfseries\large #3};%
-%	\end{tikzpicture}%
+%    \begin{tikzpicture}[x=1cm,y=1cm]%
+%        \node at (0,0) [draw=none, fill=#1, rectangle, left, inner sep=0, outer sep=0, minimum width=12mm, minimum height=1.4mm]{};%
+%        \node at (0,0) [draw=none, rectangle, right]{\hspace*{0.2cm}\bfseries\large #3};%
+%    \end{tikzpicture}%
 %}
 \newcommand{\bgskill}[3]{%
-	%\tikz \node at (0,0) [halign=right, anchor=center, draw=none, fill=#1, rectangle, minimum width=30mm,text=#2]{#3};%
-	\colorbox{#1}{\bfseries\color{#2}#3}
+    %\tikz \node at (0,0) [halign=right, anchor=center, draw=none, fill=#1, rectangle, minimum width=30mm,text=#2]{#3};%
+    \colorbox{#1}{\bfseries\color{#2}#3}
 }
 \renewcommand{\bgupper}[3]{
-	\colorbox{#1}{\color{#2}\huge\bfseries\textsc{#3}}
+    \colorbox{#1}{\color{#2}\huge\bfseries\textsc{#3}}
 }
 
 % Define typographic struts, as suggested by Claudio Beccari
@@ -270,7 +270,7 @@
 
 \bubblediagram{{\textbf{Cloud Expert}},  AWS, GCP, SRE/DevOPS, Azure, \textbf{Golang}, Architecture, \textbf{Kubernetes}}
 
-%\hspace{3cm} \color{labelcolour}{OS:} \hspace{0.05em} \icon{\faLinux}{labelcolour}{\Large} 
+%\hspace{3cm} \color{labelcolour}{OS:} \hspace{0.05em} \icon{\faLinux}{labelcolour}{\Large}
 \bigskip
 \bgtitle{maincolor}{maincolorlight}{Skill highlights}
 \bigskip
@@ -327,44 +327,44 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 
 \begin{minipage}[t]{0.72\textwidth}
 \cvsection{Latest experiences at a glance}
-	\begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} P{0.2\textwidth} }
-		 \cvevent
-			{Oct. 2021}{Jan. 2023}
-			{\textbf{Sonepar} $\cdot$ Freelance}
-			{SRE/Architect}
-			{Paris (Remote)\color{cvred}}
-			{
-				Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
-			}
-			{sonepar.png}{0.8em} \\
-		\cvevent
-			{Aug. 2019}{Sept. 2021}
-			{\textbf{e.Voyageurs SNCF} $\cdot$ Freelance}
-			{SRE/Architect}
-			{Lille (Remote)\color{cvred}}
-			{
-				Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
-			}
-			{evoy.png}{0.8em} \\
-		\cvevent
-			{Nov. 2017}{Aug. 2019}
-			{\textbf{Ritmx} $\cdot$ Freelance}
-			{SRE/Architect}
-			{Paris (half remote)\color{cvred}}
-			{
-				Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
-			}
-			{ritmx.png}{0.8em} \\
-		\cvevent
-			{Sept. 2016}{Oct. 2017}
-			{\textbf{Mirakl} $\cdot$ Freelance}
-			{SRE/Architect}
-			{Paris \color{cvred}}
-			{
-				Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
-			}
-			{mirakl.png}{-0.8em} \\
-	\end{tabular}
+    \begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} P{0.2\textwidth} }
+        \cvevent
+            {Oct. 2021}{Jan. 2023}
+            {\textbf{Sonepar} $\cdot$ Freelance}
+            {SRE/Architect}
+            {Paris (Remote)\color{cvred}}
+            {
+                Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
+            }
+            {sonepar.png}{0.8em} \\
+        \cvevent
+            {Aug. 2019}{Sept. 2021}
+            {\textbf{e.Voyageurs SNCF} $\cdot$ Freelance}
+            {SRE/Architect}
+            {Lille (Remote)\color{cvred}}
+            {
+                Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
+            }
+            {evoy.png}{0.8em} \\
+        \cvevent
+            {Nov. 2017}{Aug. 2019}
+            {\textbf{Ritmx} $\cdot$ Freelance}
+            {SRE/Architect}
+            {Paris (half remote)\color{cvred}}
+            {
+                Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
+            }
+            {ritmx.png}{0.8em} \\
+        \cvevent
+            {Sept. 2016}{Oct. 2017}
+            {\textbf{Mirakl} $\cdot$ Freelance}
+            {SRE/Architect}
+            {Paris \color{cvred}}
+            {
+                Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
+            }
+            {mirakl.png}{-0.8em} \\
+    \end{tabular}
 \end{minipage}
 
 \vspace{1.5em}
@@ -385,28 +385,28 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 \cvsection{Miscellaneous}
 \small
 \begin{itemize}
-	\item {\bfseries{2013}} (7 months), {\bfseries{2016}} (7 months) and {\bfseries{2023}} (7 months): Travel around the world.
-	\item Open source projects and experimentations:
-	\begin{itemize}
-		\item \emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject secret resource based on Hashicorp Vault) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}
-		\item \emph{\bfseries{freenas-provisioner}} creator (Kubernetes operator (Go) to dynamically provision a NFS volume from a freenas instance) \\ {\footnotesize \url{https://github.com/nmaupu/freenas-provisioner}}
-		\item Reverse engineering work on iOt devices \\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}
-	\end{itemize}
+    \item {\bfseries{2013}} (7 months), {\bfseries{2016}} (7 months) and {\bfseries{2023}} (7 months): Travel around the world.
+    \item Open source projects and experimentations:
+    \begin{itemize}
+        \item \emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject secret resource based on Hashicorp Vault) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}
+        \item \emph{\bfseries{freenas-provisioner}} creator (Kubernetes operator (Go) to dynamically provision a NFS volume from a freenas instance) \\ {\footnotesize \url{https://github.com/nmaupu/freenas-provisioner}}
+        \item Reverse engineering work on iOt devices \\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}
+    \end{itemize}
 \end{itemize}
 
 \end{minipage}
 } & {
 \begin{minipage}[t]{0.19\textwidth}
 \cvsection{Hobbies}
-	\begin{tabular}[t]{cc}
-	% usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
-	\hobbyicon{\color{iconcolour}\faPlane}{Travel}{cvgreen}{\iconsize}{2em} &
-	\hobbyicon{\color{iconcolour}\faCamera}{Photo}{cvorange}{\iconsize}{2em} \\
-	\hobbyicon{\color{iconcolour}\faWrench}{DIY}{cvpurple}{\iconsize}{2em} &
-	\hobbyicon{\color{iconcolour}\faChessPawn}{Chess}{lightgray}{\iconsize}{2em} \\
-	\hobbyicon{\color{iconcolour}\faGamepad}{Games}{red}{\iconsize}{2em} &
-	\hobbyicon{\color{iconcolour}\faMountain}{Climbing}{cyan}{\iconsize}{2em} \\
-	\end{tabular}
+    \begin{tabular}[t]{cc}
+    % usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
+    \hobbyicon{\color{iconcolour}\faPlane}{Travel}{cvgreen}{\iconsize}{2em} &
+    \hobbyicon{\color{iconcolour}\faCamera}{Photo}{cvorange}{\iconsize}{2em} \\
+    \hobbyicon{\color{iconcolour}\faWrench}{DIY}{cvpurple}{\iconsize}{2em} &
+    \hobbyicon{\color{iconcolour}\faChessPawn}{Chess}{lightgray}{\iconsize}{2em} \\
+    \hobbyicon{\color{iconcolour}\faGamepad}{Games}{red}{\iconsize}{2em} &
+    \hobbyicon{\color{iconcolour}\faMountain}{Climbing}{cyan}{\iconsize}{2em} \\
+    \end{tabular}
 \end{minipage}
 } \\
 
@@ -423,152 +423,151 @@ Looking for an opportunity to join the chess industry to ally my passion for the
 
 \cvsection{Detailed Work Experiences}
 \begin{longtable}{p{1.7cm}| p{0.67\textwidth} P{0.2\textwidth}}
-	\cveventdetailed
-		{Oct. 2021\newline Jan. 2023}
-		{Sonepar -- Freelance}
-		{SRE/Architect}
-		{Paris (Remote)\color{cvred}}
-		{
-			Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
-			\begin{itemize}
-				\item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
-				\item Massive and systematic use of the Operator Pattern \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}.
-				\begin{itemize}
-					\item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
-					\item Deployments managed by ArgoCD and CI/CD.
-					\item Created various operators based on this API.
-				\end{itemize}
-				\item Managed and resolved performance issues with related teams.
-				\item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
-				\item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
-				\item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
-			\end{itemize}
-		
-		}
-		{sonepar.png}{0.5em}{Kubernetes,Azure,GCP,AKS,GKE,IaC,Golang,ArgoCD,Terraform,Velero,Prometheus,Thanos,GNU/Linux}
-		{.3em} \\
-	\cveventdetailed
-		{Aug. 2019\newline Sept. 2021}
-		{e.Voyageurs SNCF -- Freelance}
-		{SRE/Architect}
-		{Lille (Remote)\color{cvred}}
-		{
-			Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
-			\begin{itemize}
-				\item Use of the Operator Pattern when relevant.
-				\item Created a REST API (Go) to request the creation of new namespaces into clusters (DynamoDB backend).
-				\item Created an operator (Go) listening this API and taking action on several events.
-				\item Clusters managed as code with GitOps/FluxCD.
-				\item AWS assets managed with Terraform.
-			\end{itemize}
-		}
-		{evoy.png}{0.3em}{Kubernetes,Docker,Terraform,AWS,EKS,IaC,Golang,GitOps,FluxCD,Datadog,Velero,GNU/Linux}
-		{.7em} \\
-	\cveventdetailed
-		{Nov. 2017\newline Aug. 2019}
-		{Ritmx (SNCF company) -- Freelance}
-		{SRE/Architect}
-		{Paris (half remote)\color{cvred}}
-		{
-			Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
-			\begin{itemize}
-				\item Supervised project teams.
-				\item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
-				\item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
-				\item Managed secrets using HashiCorp Vault.
-				\item Transitioned to Spring Cloud Config for managing application configurations.
-			\end{itemize}
-		}
-		{ritmx.png}{1.1em}{Kubernetes,Docker,GCP,GKE,kubeadm,Golang,Terraform,Packer,Ansible,IaC,Git,GNU/Linux}
-		{.7em} \\
-	\cveventdetailed
-		{Sept. 2016\newline Oct. 2017}
-		{Mirakl -- Freelance}
-		{SRE/Architect}
-		{Paris\color{cvred}}
-		{
-			Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
-			\begin{itemize}
-				\item Implemented Kubernetes clusters to ensure the platform's future (migrating from mono-tenant to multi-tenant microservices (Java)).
-				\item Containerized applications, logs handling (fluentd), etc.
-				\item Deployed the entire infrastructure using Terraform and Ansible.
-				\item Cultivated a DevOps best practices culture and continuous deployment awareness within teams operating in a microservices environment.
-				\item Maintained operational conditions, optimizing performance, conducting profiling, and scaling as needed.
-			\end{itemize}
-		}
-		{mirakl.png}{.15em}{Kubernetes,Docker,AWS,GCP,Terraform,Packer,Ansible,Golang,IaC,Git,GNU/Linux}
-		{0em} \\
-	\cveventdetailed
-		{Sept. 2013\newline Feb. 2016 \newline\newline and \newline\newline May 2012 \newline Feb. 2013}
-		{Orange Vallée (Orange group) -- Freelance}
-		{SRE/Architect}
-		{Châtillon (Haut-de-Seine)\color{cvred}}
-		{
-			Responsible for the technical management of the infrastructure for the Libon project at \emph{Orange Vallée}, with a specific focus on the Java/JEE backend. Two distinct roles:
-			\begin{enumerate}
-				\item Ensured the operational stability of the Libon application (on-call duties, handling production incidents, performance enhancements, etc.).
-				\item Managed the build and strengthened the infrastructure, ensuring scalability of existing and future components, standardizing and creating sustainable inter-team processes.
-			\end{enumerate}
-			Led projects on the following topics:
-			\begin{itemize}
-				\item Architecture design for the Java/JEE components.
-				\item Datacenter migration (Java/JEE foundation, system, storage, and hardware).
-				\item Process industrialization and standardization (Puppet for infrastructure build and Python with Fabric framework for apps' deployment).
-				\item Overhauled the monitoring/metrology system.
-				\item Acted as a technical expert in the following areas: Java/JEE and JVM tuning, Puppet, SSL, storage (iSCSI SAN), GNU/Linux. Advocated for best practices in these domains.
-				\item Operated in a DevOps environment and followed DevOps methodologies.
-			\end{itemize}
-		}
-		{orange.png}{1.4em}{architecture,Apache,Tomcat,BigIP,SAN,python,puppet,foreman,Shinken,Grafana,Kibana,Elasticsearch,Git,IaC,GNU/Linux}
-		{0em} \\
-	\cveventdetailed
-		{June 2011\newline May 2012}
-		{Excilys Group}
-		{SRE/Architect}
-		{Cachan (Haut-de-Seine)\color{cvred}}
-		{
-			Managed the evolution of the outdated internal infrastructure of the Excilys Group.
-			\begin{itemize}
-				\item Selected the solution (VMware) and hardware (Dell m1000e blades chassis, PowerVault iSCSI SAN).
-				\item Led the project and provided training on VMware and Dell hardware.
-				\item Designed the architecture, conducted technical and budget validation.
-				\item Implemented the solution (installation, monitoring, backups, deliveries, etc.).
-			\end{itemize}
-		}
-		{excilys.png}{0.3em}{VMware,CentOS,Tomcat,Apache,JBoss,MySQL,Git,SAN}
-		{1.5em} \\
-	\cveventdetailed
-		{June 2010\newline June 2011}
-		{Fia-Net / Excilys consulting}
-		{SRE/Architect}
-		{Paris\color{cvred}}
-		{
-			Designed and implemented a highly available virtualized architecture to host the Kwixo application (peer-to-peer money transfers and online payments).
-			\begin{itemize}
-				\item Designed and implemented the architecture (Solaris 10 and zones, Apache Tomcat).
-				\item Managed application delivery processes with a focus on standardization and industrialization.
-				\item Deployed and configured monitoring and backups. Handled performance improvements (JVM tuning).
-				\item Enacted a DevOps approach.
-			\end{itemize}
-		}
-		{fia-net.jpg}{1.5em}{CentOS,Solaris 10,Apache,Tomcat,Java/JEE,ActiveMQ,CouchDB,Centreon,Nagios,Git}
-		{1.5em} \\
-	\cveventdetailed
-		{May 2007\newline June 2010}
-		{Excilys Group}
-		{SRE/Architect}
-		{Cachan (Haut-de-Seine)\color{cvred}}
-		{
-			Various missions, including:
-			\begin{itemize}
-				\item Managed Excilys and Capico (the group's e-learning application in JEE) infrastructures on an Apache stack (\emph{mod\_jk}), \emph{JBoss}, and \emph{MySQL}.
-				\item Trained other Excilys group consultants on various topics (systems and networks, monitoring, virtualization, JVM profiling, Tomcat, and Apache).
-				\item In 2009: mission at Weldom (Leroy Merlin group) to design and implement a highly available virtualized architecture (\emph{OpenVz}) for hosting and maintaining store order management applications.
-				\item Various ad-hoc missions for analyzing JVM performance issues (HotSpot) in Java applications.
-			\end{itemize}
-		}
-		{excilys.png}{0em}{Tomcat,Apache,JBoss,Java/JEE,JMX,OpenVz,Nagios,Zabbix,JMeter}
-		{0em} \\
+    \cveventdetailed
+        {Oct. 2021\newline Jan. 2023}
+        {Sonepar -- Freelance}
+        {SRE/Architect}
+        {Paris (Remote)\color{cvred}}
+        {
+            Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
+            \begin{itemize}
+                \item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
+                \item Massive and systematic use of the Operator Pattern \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}.
+                \begin{itemize}
+                    \item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
+                    \item Deployments managed by ArgoCD and CI/CD.
+                    \item Created various operators based on this API.
+                \end{itemize}
+                \item Managed and resolved performance issues with related teams.
+                \item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
+                \item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
+                \item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
+            \end{itemize}
+        }
+        {sonepar.png}{0.5em}{Kubernetes,Azure,GCP,AKS,GKE,IaC,Golang,ArgoCD,Terraform,Velero,Prometheus,Thanos,GNU/Linux}
+        {.3em} \\
+    \cveventdetailed
+        {Aug. 2019\newline Sept. 2021}
+        {e.Voyageurs SNCF -- Freelance}
+        {SRE/Architect}
+        {Lille (Remote)\color{cvred}}
+        {
+            Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
+            \begin{itemize}
+                \item Use of the Operator Pattern when relevant.
+                \item Created a REST API (Go) to request the creation of new namespaces into clusters (DynamoDB backend).
+                \item Created an operator (Go) listening this API and taking action on several events.
+                \item Clusters managed as code with GitOps/FluxCD.
+                \item AWS assets managed with Terraform.
+            \end{itemize}
+        }
+        {evoy.png}{0.3em}{Kubernetes,Docker,Terraform,AWS,EKS,IaC,Golang,GitOps,FluxCD,Datadog,Velero,GNU/Linux}
+        {.7em} \\
+    \cveventdetailed
+        {Nov. 2017\newline Aug. 2019}
+        {Ritmx (SNCF company) -- Freelance}
+        {SRE/Architect}
+        {Paris (half remote)\color{cvred}}
+        {
+            Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
+            \begin{itemize}
+                \item Supervised project teams.
+                \item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
+                \item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
+                \item Managed secrets using HashiCorp Vault.
+                \item Transitioned to Spring Cloud Config for managing application configurations.
+            \end{itemize}
+        }
+        {ritmx.png}{1.1em}{Kubernetes,Docker,GCP,GKE,kubeadm,Golang,Terraform,Packer,Ansible,IaC,Git,GNU/Linux}
+        {.7em} \\
+    \cveventdetailed
+        {Sept. 2016\newline Oct. 2017}
+        {Mirakl -- Freelance}
+        {SRE/Architect}
+        {Paris\color{cvred}}
+        {
+            Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
+            \begin{itemize}
+                \item Implemented Kubernetes clusters to ensure the platform's future (migrating from mono-tenant to multi-tenant microservices (Java)).
+                \item Containerized applications, logs handling (fluentd), etc.
+                \item Deployed the entire infrastructure using Terraform and Ansible.
+                \item Cultivated a DevOps best practices culture and continuous deployment awareness within teams operating in a microservices environment.
+                \item Maintained operational conditions, optimizing performance, conducting profiling, and scaling as needed.
+            \end{itemize}
+        }
+        {mirakl.png}{.15em}{Kubernetes,Docker,AWS,GCP,Terraform,Packer,Ansible,Golang,IaC,Git,GNU/Linux}
+        {0em} \\
+    \cveventdetailed
+        {Sept. 2013\newline Feb. 2016 \newline\newline and \newline\newline May 2012 \newline Feb. 2013}
+        {Orange Vallée (Orange group) -- Freelance}
+        {SRE/Architect}
+        {Châtillon (Haut-de-Seine)\color{cvred}}
+        {
+            Responsible for the technical management of the infrastructure for the Libon project at \emph{Orange Vallée}, with a specific focus on the Java/JEE backend. Two distinct roles:
+            \begin{enumerate}
+                \item Ensured the operational stability of the Libon application (on-call duties, handling production incidents, performance enhancements, etc.).
+                \item Managed the build and strengthened the infrastructure, ensuring scalability of existing and future components, standardizing and creating sustainable inter-team processes.
+            \end{enumerate}
+            Led projects on the following topics:
+            \begin{itemize}
+                \item Architecture design for the Java/JEE components.
+                \item Datacenter migration (Java/JEE foundation, system, storage, and hardware).
+                \item Process industrialization and standardization (Puppet for infrastructure build and Python with Fabric framework for apps' deployment).
+                \item Overhauled the monitoring/metrology system.
+                \item Acted as a technical expert in the following areas: Java/JEE and JVM tuning, Puppet, SSL, storage (iSCSI SAN), GNU/Linux. Advocated for best practices in these domains.
+                \item Operated in a DevOps environment and followed DevOps methodologies.
+            \end{itemize}
+        }
+        {orange.png}{1.4em}{architecture,Apache,Tomcat,BigIP,SAN,python,puppet,foreman,Shinken,Grafana,Kibana,Elasticsearch,Git,IaC,GNU/Linux}
+        {0em} \\
+    \cveventdetailed
+        {June 2011\newline May 2012}
+        {Excilys Group}
+        {SRE/Architect}
+        {Cachan (Haut-de-Seine)\color{cvred}}
+        {
+            Managed the evolution of the outdated internal infrastructure of the Excilys Group.
+            \begin{itemize}
+                \item Selected the solution (VMware) and hardware (Dell m1000e blades chassis, PowerVault iSCSI SAN).
+                \item Led the project and provided training on VMware and Dell hardware.
+                \item Designed the architecture, conducted technical and budget validation.
+                \item Implemented the solution (installation, monitoring, backups, deliveries, etc.).
+            \end{itemize}
+        }
+        {excilys.png}{0.3em}{VMware,CentOS,Tomcat,Apache,JBoss,MySQL,Git,SAN}
+        {1.5em} \\
+    \cveventdetailed
+        {June 2010\newline June 2011}
+        {Fia-Net / Excilys consulting}
+        {SRE/Architect}
+        {Paris\color{cvred}}
+        {
+            Designed and implemented a highly available virtualized architecture to host the Kwixo application (peer-to-peer money transfers and online payments).
+            \begin{itemize}
+                \item Designed and implemented the architecture (Solaris 10 and zones, Apache Tomcat).
+                \item Managed application delivery processes with a focus on standardization and industrialization.
+                \item Deployed and configured monitoring and backups. Handled performance improvements (JVM tuning).
+                \item Enacted a DevOps approach.
+            \end{itemize}
+        }
+        {fia-net.jpg}{1.5em}{CentOS,Solaris 10,Apache,Tomcat,Java/JEE,ActiveMQ,CouchDB,Centreon,Nagios,Git}
+        {1.5em} \\
+    \cveventdetailed
+        {May 2007\newline June 2010}
+        {Excilys Group}
+        {SRE/Architect}
+        {Cachan (Haut-de-Seine)\color{cvred}}
+        {
+            Various missions, including:
+            \begin{itemize}
+                \item Managed Excilys and Capico (the group's e-learning application in JEE) infrastructures on an Apache stack (\emph{mod\_jk}), \emph{JBoss}, and \emph{MySQL}.
+                \item Trained other Excilys group consultants on various topics (systems and networks, monitoring, virtualization, JVM profiling, Tomcat, and Apache).
+                \item In 2009: mission at Weldom (Leroy Merlin group) to design and implement a highly available virtualized architecture (\emph{OpenVz}) for hosting and maintaining store order management applications.
+                \item Various ad-hoc missions for analyzing JVM performance issues (HotSpot) in Java applications.
+            \end{itemize}
+        }
+        {excilys.png}{0em}{Tomcat,Apache,JBoss,Java/JEE,JMX,OpenVz,Nagios,Zabbix,JMeter}
+        {0em} \\
 \end{longtable}
 
 \end{document}
