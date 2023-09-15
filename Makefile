@@ -1,15 +1,17 @@
 ADDRESS ?= no-spam
 MOBILE ?= no-spam
 EMAIL ?= no-spam
+LANGUAGE ?= fr
 
 .PHONY: cv.tex all clean view
 
 all: cv.pdf
 
 cv.tex:
-	sed -e "s/@ADDRESS@/$(ADDRESS)/g" \
-	    -e "s/@MOBILE@/$(MOBILE)/g" \
-	    -e "s/@EMAIL@/$(EMAIL)/g" \
+	sed -e "s/@ADDRESS@/$(ADDRESS)/g"   \
+	    -e "s/@MOBILE@/$(MOBILE)/g"     \
+	    -e "s/@EMAIL@/$(EMAIL)/g"       \
+	    -e "s/@LANGUAGE@/$(LANGUAGE)/g" \
 	    cv-nospam.tex > cv.tex
 
 %.pdf: %.tex

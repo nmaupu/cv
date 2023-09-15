@@ -15,8 +15,8 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{longtable}
 
-% Langage to generate
-\input{lang/en.tex}
+% Lang to generate
+\input{lang/@LANGUAGE@.tex}
 
 \newlength{\rightcolwidth}
 \newlength{\leftcolwidth}
@@ -91,8 +91,9 @@
 \small
 {\setasidefontcolour
 \bgtitle{maincolor}{maincolorlight}{\langLeftColAboutMe}
-\bigskip
 
+% No bigskip here to avoid page break
+% \bigskip
 
 \begin{tabular}{ll}
   \faMale&Nicolas Maupu \\
@@ -162,14 +163,17 @@
 \switchcolumn
 %-----------------------------------------------------------
 
-\vspace{.5em}
+%\nopagebreak block to avoid breaking the first page anywhere but it will break if too long anyway...
+\nopagebreak[4]
+{
+\vspace{.2em}
 
 \begin{minipage}[t]{0.72\textwidth}
 \cvsection{\langMainProfessionalObj}
-  \small\langMainProfessionalObjContent
+  \small \langMainProfessionalObjContent{\FPround\myage{\myage}{0}\myage}
 \end{minipage}
 
-\vspace{1.5em}
+\vspace{1.2em}
 
 \begin{minipage}[t]{0.72\textwidth}
 \cvsection{\langMainLatestExp}
@@ -205,7 +209,7 @@
   \end{tabular}
 \end{minipage}
 
-\vspace{1.5em}
+\vspace{1.2em}
 
   \begin{tabular}[t]{@{}p{0.5\textwidth} c@{}} % @{} removes margins of the tabular
   {
@@ -213,12 +217,12 @@
     % -----------------
     \cvsection{\langMainDegrees}
     \begin{tabular}{r p{0.8\textwidth} c}
-      \cvdegree{2007}{\langMainDegreesMaster}{\langMainDegreesMasterName}{\langMainDegreesAwardHighHonours -- Versailles} \\
-      \cvdegree{2003}{\langMainDegreesDUT}{\langMainDegreesDUTName}{\langMainDegreesAwardHonours -- V\'{e}lizy} \\
+      \cvdegree{2007}{\langMainDegreesMaster}{\langMainDegreesMasterName}{\langMainDegreesAwardHighHonours \space -- Versailles} \\
+      \cvdegree{2003}{\langMainDegreesDUT}{\langMainDegreesDUTName}{\langMainDegreesAwardHonours \space -- V\'{e}lizy} \\
       \cvdegree{2001}{\langMainDegreesBac}{\langMainDegreesBacName}{D\'{e}ville-les-Rouen} \\
     \end{tabular}
 
-    \vspace{1.5em}
+    \vspace{1.2em}
 
     % -----------------
     \cvsection{\langMainMisc}
@@ -227,9 +231,9 @@
       \item \langMainMiscTravels
       \item \langMainMiscOpenSource
       \begin{itemize}
-        \item \langMainMiscOpenSourceVaultSecret
-        \item \langMainMiscOpenSourceFreenasProv
-        \item \langMainMiscOpenSourceYokis
+          \item \langMainMiscOpenSourceVaultSecret
+          \item \langMainMiscOpenSourceFreenasProv
+          \item \langMainMiscOpenSourceYokis
       \end{itemize}
     \end{itemize}
 
@@ -252,6 +256,7 @@
     } \\
 
   \end{tabular}
+} % end \nopagebreak
 
 \end{paracol}
 
@@ -261,3 +266,5 @@
 % ----- Below is only detailed stuff to exclude if need be.
 
 \input{detailed-exp.tex}
+
+\end{document}

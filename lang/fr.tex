@@ -1,4 +1,205 @@
+\usepackage[french]{babel}
+% Month
+\def\langJan{Janv.\space}
+\def\langFeb{Févr.\space}
+\def\langMar{Mars\space}
+\def\langApr{Avril\space}
+\def\langMay{Mai\space}
+\def\langJun{Juin\space}
+\def\langJul{Juil.\space}
+\def\langAug{Août\space}
+\def\langSep{Sept.\space}
+\def\langOct{Oct.\space}
+\def\langNov{Nov.\space}
+\def\langDec{Déc.\space}
+
+% Misc words
+\def\langRemote{remote}
+\def\langPartialRemote{semi-remote}
+\def\langFreelance{Freelance}
+\def\langAnd{et}
+
 % Header
-\def\langHeaderJobTitle{SRE/DevOps, Kubernetes, Go et expert cloud}
-\def\langHeaderFreelance{Freelance}
-\def\langHeaderExperience{ans d'expérience}
+\def\langHeaderJobTitle{SRE/DevOps, expert Kubernetes, Go et cloud}
+\def\langHeaderExperience{années d'expérience}
+
+% Left column content
+\def\langLeftColAboutMe{À propos}
+\def\langLeftColAboutMeNationality{Française}
+
+\def\langLeftColLanguage{Langues}
+\def\langLeftColLanguageFrench{Français}
+\def\langLeftColLanguageEnglish{Anglais}
+\def\langLeftColLanguageMotherTongue{langue maternelle}
+
+\def\langLeftColInterests{Intérêts}
+\def\langLeftColInterestsCloudExpert{Expert Cloud}
+\def\langLeftColInterestsArchitecture{Architecture}
+
+\def\langLeftColSkills{Compétences}
+\def\langLeftColSkillsClouds{Clouds et conteneurisation}
+\def\langLeftColIaC{Infrastructure as Code}
+\def\langLeftColMonitoring{Monitoring}
+\def\langLeftColSystemsAndLanguages{Systèmes \& Langages}
+
+% Main content objectives
+\def\langMainProfessionalObj{Objectif professionnel}
+\newcommand{\langMainProfessionalObjContent}[1]{
+  \par Expert Kubernetes et cloud avec #1+ ans d'expérience dans le \emph{design}, la mise en place et le maintien opérationnel d'infrastructures de prod hautement disponibles et \emph{scalables}.
+  \par Passioné de technologies, je suis enthousiate à l'idée de rejoindre vos équipes et de mettre mes compétences à votre service pour vous apporter conseils et expertise.
+}
+\def\langMainLatestExp{Résumé des dernières expériences}
+\def\langMainLatestExpSonepar{
+  En charge de construire une architecture multi-tenants afin de répondre aux enjeux d’homogénéisation des assets de Sonepar disséminés à l'international et gérés de manière autonome par chaque pays.
+}
+\def\langMainLatestExpEvoy{
+  Mise en place d'une équipe pivot pour créer une stack Kubernetes «on-demand» afin d'assurer une migration vers le cloud (AWS) de tous les projets SNCF.
+}
+\def\langMainLatestExpRitmx{
+  Responsable de la migration de l'ensemble des applicatifs existants (java) sur Kubernetes.
+}
+\def\langMainLatestExpMirakl{
+  En charge de l'évolution de la plate-forme Mirakl (gestionnaire de marketplaces en SaaS) au sein de l'équipe SRE.
+}
+
+% Main content degrees
+\def\langMainDegrees{Diplômes}
+\def\langMainDegreesMaster{Master}
+\def\langMainDegreesMasterName{Analyses des Systèmes Stratégiques}
+\def\langMainDegreesAwardHighHonours{Mention bien}
+\def\langMainDegreesAwardHonours{Mention assez bien}
+\def\langMainDegreesDUT{DUT}
+\def\langMainDegreesDUTName{Génie informatique}
+\def\langMainDegreesBac{Bac général}
+\def\langMainDegreesBacName{Série S, spécialité mathématiques}
+
+% Main content miscellaneous
+\def\langMainMisc{Activités diverses}
+\def\langMainMiscTravels{{\bfseries{2013}} (7 mois), {\bfseries{2016}} (7 mois) and {\bfseries{2023}} (7 mois): voyages autour du monde.}
+\def\langMainMiscOpenSource{Projets open source et expérimentations:}
+\def\langMainMiscOpenSourceVaultSecret{Créateur de \emph{\bfseries{vault-secret}}, operateur Kubernetes en Go permettant d'injecter des ressources \emph{Secret} à partir de Hashicorp Vault\\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}}
+\def\langMainMiscOpenSourceFreenasProv{Créateur de \emph{\bfseries{freenas-provisioner}}, operateur Kubernetes en Go pour le provisionnement dynamique de volumes NFS hébergés sur du Freenas\\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}}
+\def\langMainMiscOpenSourceYokis{Travaux de reverse engineering de modules de domotique\\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}}
+
+% Main content hobbies
+\def\langMainHobbies{Loisirs}
+\def\langMainHobbiesTravel{Voyage}
+\def\langMainHobbiesPhoto{Photo}
+\def\langMainHobbiesDIY{DIY}
+\def\langMainHobbiesChess{Échecs}
+\def\langMainHobbiesGames{Jeux}
+\def\langMainHobbiesClimbing{Escalade}
+
+% Detailed experiences
+\def\langDetailedExp{Expériences Professionnelles Détaillées}
+\def\langDetailedExpSonepar{
+  En charge de construire une architecture multi-tenants afin de répondre aux enjeux d’homogénéisation des assets de Sonepar disséminés à l'international et gérés de manière autonome par chaque pays.
+  \begin{itemize}
+    \item Automatisation et mise en place de clusters Kubernetes (AKS) afin d'héberger les applicatifs (micro-services Java et NodeJS).
+    \item Utilisation massive et systématique de l'\emph{Operator Pattern}. \newline \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}
+    \begin{itemize}
+      \item Création et mise en place d'une API REST (en Go) afin de contrôler les déploiements automatiques des divers composants (sous forme de CustomResources).
+      \item Gestion des déploiements (infra et applicatifs) à l'aide d'ArgoCD.
+      \item Création et mise en place de divers operateurs (en Go) autour de cette API.
+    \end{itemize}
+    \item Gestion des enjeux de performance en collaboration avec les équipes concernées.
+    \item Mise en place d'une stack de logs (Azure $\rightarrow$ Kafka $\rightarrow$ Fluentd $\rightarrow$ Splunk).
+    \item Mise en place d'une stack de monitoring haute-dispo agnostique de la plate-forme (Prometheus, Thanos, Alertmanager).
+    \item Préparation du multi-clouds avec GCP (enjeux réseaux et agnosticité des composants Azure).
+  \end{itemize}
+}
+\def\langDetailedExpEvoy{
+  Après la fusion de l'entité Ritmx au sein de la filiale d'e.Voyageurs, mise en place d'une équipe pivot pour la création d'une stack Kubernetes «on-demand» afin d'assurer une migration vers le cloud (AWS) de tous les projets SNCF.
+  \begin{itemize}
+    \item Automatisation de la création de clusters EKS auto-scalables (\emph{ansible / AWX} et \emph{eksctl}).
+    \item Recours à l'\emph{Operator Pattern} suivant les cas. \newline \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}
+      \begin{itemize}
+        \item Création d'une API REST pour faire les demandes de namespaces k8s (backend DynamoDB).
+        \item Création d'un operator (en Go) écoutant cette API pour créer et configurer automatiquement les namespaces demandés via l'API.
+      \end{itemize}
+    \item Gestion de tous les clusters \emph{as code} via GitOps.
+    \item Gestion des assets AWS avec Terraform (\emph{eksctl} pour la partie EKS).
+  \end{itemize}
+}
+\def\langDetailedExpRitmxCompanyName{Ritmx (filiale SNCF)}
+\def\langDetailedExpRitmx{
+  Responsable de la migration de l'ensemble des applicatifs existants (\emph{Java}) sur Kubernetes.
+  \begin{itemize}
+    \item Encadrement des équipes projet.
+    \item Architecture et mise en place de clusters Kubernetes \emph{on-premises} et GKE (\emph{Terraform, Packer}, etc.).
+    \item Préparation d'un pipeline de déploiement unifié inter-équipe pour livrer sur du Kubernetes.
+    \item Gestion des secrets via \emph{Hashicorp Vault}.
+    \item Passage à \emph{Spring Cloud Config} pour la gestion des configurations applicatives.
+  \end{itemize}
+
+  Quelques challenges intéressants pour une migration conteneurs en douceur :
+  \begin{itemize}
+    \item Gestion des logs (\emph{Fluentbit/Fluentd} → \emph{Elasticsearch}).
+    \item Transformation de la supervision legacy vers une stack récente (\emph{Prometheus, Alertmanager, Thanos}, etc.).
+    \item Mise en place d'outillage sur-mesure via des controllers/operators Kubernetes (en Go).
+  \end{itemize}
+}
+\def\langDetailedExpMirakl{
+  En charge de l'évolution de la plate-forme Mirakl (gestionnaire de marketplaces en SaaS) au sein de l'équipe SRE (Site Reliability Engineer).
+  \begin{itemize}
+    \item Mise en place de clusters Kubernetes afin d'assurer le futur de la plate-forme (migration mono-tenant vers du multi-tenants / micro services).
+    \item Conteneurisation des applicatifs, gestion des logs, des mails, etc. dans un contexte docker.
+    \item Architecture Amazon AWS entièrement automatisée et déployée avec Terraform et Ansible.
+    \item Sensibilisation des équipes sur les bonnes pratiques DevOps et de déploiement continu en environnement micro services.
+    \item Maintien en conditions opérationnelles (perfs, profiling, dimensionnement, etc.).
+  \end{itemize}
+}
+\def\langDetailedExpOrangeCompanyName{Orange Vallée (groupe Orange)}
+\def\langDetailedExpOrange{
+  En charge de la gestion technique de l'infrastructure du projet Libon chez Orange Vallée et plus particulièrement de la partie backend Java/JEE.
+
+  Deux rôles bien distincts:
+  \begin{enumerate}
+    \item Assurer le run de l'application Libon (astreintes, gestion des incidents de production, amélioration des performances, etc ...)
+    \item Assurer le build et renforcer l'infrastructure : scalabilité des composants existants et futurs, industrialisation, création de processus inter-équipes pérennes, etc.
+  \end{enumerate}
+
+  \begin{itemize}
+    \item Architecte système sur les composants relatifs à Java/JEE.
+    \item Chef de projet sur les sujets suivants:
+      \begin{itemize}
+        \item migration de datacenter (socle Java/JEE, système, stockage et hardware).
+        \item industrialisation des processus et normalisation:
+        \begin{itemize}
+          \item mise en place d'un environnement Puppet (~300 serveurs gérés).
+          \item élaboration d'un framework de déploiement en Python / Fabric.
+        \end{itemize}
+        \item refonte du système de monitoring et de métrologie.
+      \end{itemize}
+    \item Référent technique sur les sujets suivants: Java/JEE et tuning JVM, Puppet, SSL, stockage (SAN), GNU/Linux. Évangélisateur des bonnes pratiques liées à ces sujets.
+    \item Environnement et méthodologies DevOps.
+  \end{itemize}
+}
+\def\langDetailedExpExcilysSecond{
+  En charge de l'évolution de l'architecture interne du groupe Excilys devenue obsolète.
+  \begin{itemize}
+    \item Choix de la solution (\emph{VMware}) et du matériel (\emph{châssis Blades Dell m1000e}, \emph{SAN Dell PowerVault iSCSI}).
+    \item Chef de projet et formation des personnes sur les sujets \emph{VMware} et hardware Dell.
+    \item Conception de l'architecture, validation technique et budgétaire.
+    \item Mise en place de la solution (installation, monitoring, backups, livraisons).
+  \end{itemize}
+}
+\def\langDetailedExpFianetConpanyName{Fia-Net / consultant Excilys}
+\def\langDetailedExpFianet{
+  En charge de la conception et de la réalisation d'une architecture virtualisée hautement disponible destinée à héberger l'application Kwixo (envoi d'argent entre particuliers et paiements en ligne).
+  \begin{itemize}
+    \item Conception et mise en place de l'architecture.
+    \item Gestion des processus de livraison applicative (normalisation et industrialisation).
+    \item Monitoring, backups et amélioration des performances (tuning JVM).
+    \item Démarche DevOps.
+  \end{itemize}
+}
+\def\langDetailedExpExcilysFirst{
+Diverses missions, notamment:
+\begin{itemize}
+  \item Gestion de l'infrastructure Excilys et de Capico (application e-learning du groupe en Java/JEE) sur une stack Apache (\emph{mod\_jk}), \emph{JBoss}, et \emph{MySQL}.
+  \item Formateur en charge d'assurer la montée en compétences des autres consultants du groupe Excilys sur divers sujets (systèmes et réseaux, monitoring, virtualisation, profiling JVM, Tomcat et Apache).
+  \item 2009: mission chez Weldom (groupe Leroy Merlin) afin de réaliser et de mettre en place une architecture virtualisée hautement disponible (OpenVz) permettant l'hébergement et la maintenance des applications de gestion des commandes des magasins.
+  \item Diverses autres missions ponctuelles d'analyse de problèmes de performance JVM (HotSpot) sur des applicatifs Java.
+\end{itemize}
+}

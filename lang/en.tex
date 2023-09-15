@@ -1,22 +1,23 @@
 \usepackage[english]{babel}
 % Month
-\def\langJan{Jan.}
-\def\langFeb{Feb.}
-\def\langMar{Mar.}
-\def\langApr{Apr.}
-\def\langMay{May}
-\def\langJun{Jun.}
-\def\langJul{Jul.}
-\def\langAug{Aug.}
-\def\langSep{Sept.}
-\def\langOct{Oct.}
-\def\langNov{Nov.}
-\def\langDec{Dec.}
+\def\langJan{Jan.\space}
+\def\langFeb{Feb.\space}
+\def\langMar{Mar.\space}
+\def\langApr{Apr.\space}
+\def\langMay{May\space}
+\def\langJun{June\space}
+\def\langJul{Jul.\space}
+\def\langAug{Aug.\space}
+\def\langSep{Sept.\space}
+\def\langOct{Oct.\space}
+\def\langNov{Nov.\space}
+\def\langDec{Dec.\space}
 
 % Misc words
 \def\langRemote{remote}
 \def\langPartialRemote{half remote}
 \def\langFreelance{Freelance}
+\def\langAnd{and}
 
 % Header
 \def\langHeaderJobTitle{SRE/DevOps, Kubernetes, Go and cloud expert}
@@ -43,8 +44,8 @@
 
 % Main content objectives
 \def\langMainProfessionalObj{Professional objective}
-\def\langMainProfessionalObjContent{
-  \par Kubernetes and cloud expert with 16+ years of experience in designing and managing highly available and scalable production platforms.
+\newcommand{\langMainProfessionalObjContent}[1]{
+  \par Kubernetes and cloud expert with #1+ years of experience in designing and managing highly available and scalable production platforms.
   \par Looking for an opportunity to join the chess industry to ally my passion for the game and my professional life. Passionate about technology, I am excited to use all my knowledge to help you thrive.
 }
 \def\langMainLatestExp{Latest experiences at a glance}
@@ -77,7 +78,7 @@
 \def\langMainMiscTravels{{\bfseries{2013}} (7 months), {\bfseries{2016}} (7 months) and {\bfseries{2023}} (7 months): travels around the world.}
 \def\langMainMiscOpenSource{Open source projects and experimentations:}
 \def\langMainMiscOpenSourceVaultSecret{\emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject secret resource based on Hashicorp Vault) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}}
-\def\langMainMiscOpenSourceFreenasProv{\emph{\bfseries{vault-secret}} creator (Kubernetes operator (Go) to inject \emph{secret} resources based on \emph{Hashicorp Vault}) \\ {\footnotesize \url{https://github.com/nmaupu/vault-secret}}}
+\def\langMainMiscOpenSourceFreenasProv{\emph{\bfseries{freenas-provisioner}} creator (Kubernetes operator (Go) to dynamically provision a NFS volume from a Freenas instance\\ {\footnotesize \url{https://github.com/nmaupu/freenas-provisioner}}}
 \def\langMainMiscOpenSourceYokis{Reverse engineering work on iOt devices \\ {\footnotesize \url{https://github.com/nmaupu/yokis-hack}} \\ {\footnotesize \url{https://tinyurl.com/hackaday-yokis-hack}}}
 
 % Main content hobbies
@@ -90,3 +91,96 @@
 \def\langMainHobbiesClimbing{Climbing}
 
 % Detailed experiences
+\def\langDetailedExp{Detailed Work Experience}
+\def\langDetailedExpSonepar{
+  Prepared and implemented a multi-tenants {\bfseries Kubernetes} architecture (Azure) for all Sonepar entities to allow homogeneous deployment of company's assets.
+  \begin{itemize}
+    \item Automatized and deployed Kubernetes clusters (AKS) to host applications (Java micro-services and NodeJS).
+    \item Massive and systematic use of the \emph{Operator Pattern}. \newline \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}
+    \begin{itemize}
+      \item Created a REST API (Go) to inventory and manage deployments of infrastructure components (using Custom Resources for storage).
+      \item Deployments managed by ArgoCD and CI/CD.
+      \item Created various operators based on this API.
+    \end{itemize}
+    \item Managed and resolved performance issues with related teams.
+    \item Set up a log stack (Azure → Kafka → Fluentd → Splunk).
+    \item Set up a highly available monitoring stack agnostic from the platform (Prometheus, Thanos, Alertmanager).
+    \item Prepared multi-clouds deployment with GCP (network and agnosticity of Azure components)
+  \end{itemize}
+}
+\def\langDetailedExpEvoy{
+  Implemented an "on-demand" {\bfseries Kubernetes} stack (AWS) to conduct a smooth migration of all SNCF components to AWS.
+  \begin{itemize}
+    \item Use of the \emph{Operator Pattern} when relevant. \newline \url{https://kubernetes.io/docs/concepts/extend-kubernetes/operator}
+    \item Created a REST API (Go) to request the creation of new namespaces into clusters (DynamoDB backend).
+    \item Created an operator (Go) listening this API and taking action on several events.
+    \item Clusters managed as code with GitOps/FluxCD.
+    \item AWS assets managed with Terraform.
+  \end{itemize}
+}
+\def\langDetailedExpRitmxCompanyName{Ritmx (SNCF company)}
+\def\langDetailedExpRitmx{
+  Created and led a team responsible for implementing a {\bfseries Kubernetes} infrastructure (GCP, on-prem) and led the migration of all existing Java applications to it.
+  \begin{itemize}
+    \item Supervised project teams.
+    \item Designed and implemented on-premises and GKE Kubernetes clusters using Terraform, Packer, and other tools.
+    \item Prepared a unified inter-team deployment pipeline for delivering on Kubernetes.
+    \item Managed secrets using HashiCorp Vault.
+    \item Transitioned to Spring Cloud Config for managing application configurations.
+  \end{itemize}
+}
+\def\langDetailedExpMirakl{
+  Developped a {\bfseries Kubernetes} platform (AWS) and migrated all applications to it with automated and continuous deployments.
+  \begin{itemize}
+    \item Implemented Kubernetes clusters to ensure the platform's future (migrating from mono-tenant to multi-tenant microservices (Java)).
+    \item Containerized applications, logs handling (fluentd), etc.
+    \item Deployed the entire infrastructure using Terraform and Ansible.
+    \item Cultivated a DevOps best practices culture and continuous deployment awareness within teams operating in a microservices environment.
+    \item Maintained operational conditions, optimizing performance, conducting profiling, and scaling as needed.
+  \end{itemize}
+}
+\def\langDetailedExpOrangeCompanyName{Orange Vallée (Orange group)}
+\def\langDetailedExpOrange{
+  Responsible for the technical management of the infrastructure for the Libon project at \emph{Orange Vallée}, with a specific focus on the Java/JEE backend. Two distinct roles:
+  \begin{enumerate}
+    \item Ensured the operational stability of the Libon application (on-call duties, handling production incidents, performance enhancements, etc.).
+    \item Managed the build and strengthened the infrastructure, ensuring scalability of existing and future components, standardizing and creating sustainable inter-team processes.
+  \end{enumerate}
+  Led projects on the following topics:
+  \begin{itemize}
+    \item Architecture design for the Java/JEE components.
+    \item Datacenter migration (Java/JEE foundation, system, storage, and hardware).
+    \item Process industrialization and standardization (Puppet for infrastructure build and Python with Fabric framework for apps' deployment).
+    \item Overhauled the monitoring/metrology system.
+    \item Acted as a technical expert in the following areas: Java/JEE and JVM tuning, Puppet, SSL, storage (iSCSI SAN), GNU/Linux. Advocated for best practices in these domains.
+    \item Operated in a DevOps environment and followed DevOps methodologies.
+  \end{itemize}
+}
+\def\langDetailedExpExcilysSecond{
+  Managed the evolution of the outdated internal infrastructure of the Excilys Group.
+  \begin{itemize}
+    \item Selected the solution (VMware) and hardware (Dell m1000e blades chassis, PowerVault iSCSI SAN).
+    \item Led the project and provided training on VMware and Dell hardware.
+    \item Designed the architecture, conducted technical and budget validation.
+    \item Implemented the solution (installation, monitoring, backups, deliveries, etc.).
+  \end{itemize}
+}
+\def\langDetailedExpFianetConpanyName{Fia-Net / Excilys consulting}
+\def\langDetailedExpFianet{
+  Designed and implemented a highly available virtualized architecture to host the Kwixo application (peer-to-peer money transfers and online payments).
+  \begin{itemize}
+    \item Designed and implemented the architecture (Solaris 10 and zones, Apache Tomcat).
+    \item Managed application delivery processes with a focus on standardization and industrialization.
+    \item Deployed and configured monitoring and backups. Handled performance improvements (JVM tuning).
+    \item Enacted a DevOps approach.
+  \end{itemize}
+}
+\def\langDetailedExpExcilysFirst{
+  Various missions, including:
+  \begin{itemize}
+    \item Managed Excilys and Capico (the group's e-learning application in JEE) infrastructures on an Apache stack (\emph{mod\_jk}), \emph{JBoss}, and \emph{MySQL}.
+    \item Trained other Excilys group consultants on various topics (systems and networks, monitoring, virtualization, JVM profiling, Tomcat, and Apache).
+    \item In 2009: mission at Weldom (Leroy Merlin group) to design and implement a highly available virtualized architecture (\emph{OpenVz}) for hosting and maintaining store order management applications.
+    \item Various ad-hoc missions for analyzing JVM performance issues (HotSpot) in Java applications.
+  \end{itemize}
+}
