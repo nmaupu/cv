@@ -26,9 +26,10 @@ $(cv_filename).tex:
 	pdflatex -halt-on-error $<
 	pdflatex -halt-on-error $<
 	pdflatex -halt-on-error $<
+	rm -f $(cv_filename).tex
 
 clean:
-	rm -f *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb cv.tex $(cv_filename).tex $(cv_filename).pdf
+	rm -f *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb
 
 view: $(cv_filename).pdf
 	evince $<
