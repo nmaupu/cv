@@ -1,12 +1,19 @@
+% Allow changing letter tracking (space between letters)
+\usepackage[letterspace=20]{microtype}
+\def\titleFont{qag}
+
+\usepackage{titlesec} % Allows creating custom \sections
+% Format of the section titles
+\titleformat{\section}
+  {\fontfamily{\titleFont}\selectfont\Large\raggedright\lsstyle\bfseries\scshape}
+  {}{0em}{}[\titlerule] % smallcaps, Large, continuous line - looks better if two columns, might look a bit too dramatic if just one ;)
+\titlespacing{\section}{0pt}{12pt}{5pt} % Spacing around titles {<left spacing>}{<before spacing>}{<after spacing>}
+
 % \cvdegree{2015}{Docker}{Administration and Operation}{foo} \\
 \renewcommand{\cvdegree}[4]{%
   {#1} & %
   \textbf{#2} \small {#3} \newline %
   {\color{black!70}\scriptsize #4} \vspace{0.5em} %
-}
-
-\newcommand{\cvsection}[1] {%
-  \section*{\textbf{#1}}
 }
 
 \renewcommand{\pictofraction}[2]{%
@@ -72,8 +79,9 @@
 }
 \newcommand{\bgtitle}[3]{%
   \begin{tikzpicture}[x=1cm,y=1cm]%
+    \fontfamily{\titleFont}\selectfont
     \node at (0,0) [draw=none, fill=#1, rectangle, inner sep=0, outer sep=0, minimum width=55mm, minimum height=1.4mm]{};%
-    \node at (0,0) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large #3\hspace*{0.2cm}};%
+    \node at (0,.05) [draw=none, rectangle, anchor=center, fill=#2]{\hspace*{0.2cm}\bfseries\large\scshape\lsstyle #3\hspace*{0.2cm}};%
   \end{tikzpicture}%
 }
 %\newcommand{\bgtitle}[3]{%

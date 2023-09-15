@@ -1,9 +1,14 @@
 % From https://github.com/latex-ninja/hipster-cv with a lot of modifications
 \documentclass[darkhipster]{hipstercv}
 % available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight
-\usepackage[utf8]{inputenc}
+% Lang to generate
+
 \usepackage[default]{raleway}
-\usepackage[margin=1cm,a4paper,includefoot,heightrounded]{geometry}
+\input{lang/@LANGUAGE@.tex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[top=1cm,bottom=.8cm,left=1cm,right=1cm,a4paper,includefoot,heightrounded]{geometry}
 \usepackage{datenumber,fp}
 \usepackage{changepage}
 \usepackage{makecell}
@@ -12,11 +17,9 @@
 \usepackage{xcolor}
 \usepackage{xparse}
 \usepackage{array}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{longtable}
 
-% Lang to generate
-\input{lang/@LANGUAGE@.tex}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
 \newlength{\rightcolwidth}
 \newlength{\leftcolwidth}
@@ -166,17 +169,15 @@
 %\nopagebreak block to avoid breaking the first page anywhere but it will break if too long anyway...
 \nopagebreak[4]
 {
-\vspace{.2em}
-
 \begin{minipage}[t]{0.72\textwidth}
-\cvsection{\langMainProfessionalObj}
+\section{\langMainProfessionalObj}
   \small \langMainProfessionalObjContent{\FPround\myage{\myage}{0}\myage}
 \end{minipage}
 
-\vspace{1.2em}
+\vspace{1.5em}
 
 \begin{minipage}[t]{0.72\textwidth}
-\cvsection{\langMainLatestExp}
+\section{\langMainLatestExp}
   \begin{tabular}[t]{p{1.6cm} | p{0.6\textwidth} P{0.2\textwidth} }
     \cvevent
       {\langOct 2021}{\langFeb 2023}
@@ -209,23 +210,23 @@
   \end{tabular}
 \end{minipage}
 
-\vspace{1.2em}
+\vspace{0.5em}
 
   \begin{tabular}[t]{@{}p{0.5\textwidth} c@{}} % @{} removes margins of the tabular
   {
     \begin{minipage}[t]{0.5\textwidth}
     % -----------------
-    \cvsection{\langMainDegrees}
+    \section{\langMainDegrees}
     \begin{tabular}{r p{0.8\textwidth} c}
       \cvdegree{2007}{\langMainDegreesMaster}{\langMainDegreesMasterName}{\langMainDegreesAwardHighHonours \space -- Versailles} \\
       \cvdegree{2003}{\langMainDegreesDUT}{\langMainDegreesDUTName}{\langMainDegreesAwardHonours \space -- V\'{e}lizy} \\
       \cvdegree{2001}{\langMainDegreesBac}{\langMainDegreesBacName}{D\'{e}ville-les-Rouen} \\
     \end{tabular}
 
-    \vspace{1.2em}
+    \vspace{1em}
 
     % -----------------
-    \cvsection{\langMainMisc}
+    \section{\langMainMisc}
     \small
     \begin{itemize}
       \item \langMainMiscTravels
@@ -242,7 +243,7 @@
     \begin{minipage}[t]{0.19\textwidth}
 
     % -----------------
-    \cvsection{\langMainHobbies}
+    \section{\langMainHobbies}
       \begin{tabular}[t]{cc}
       % usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
       \hobbyicon{\color{iconcolour}\faPlane}{\langMainHobbiesTravel}{cvgreen}{\iconsize}{2em} &
