@@ -24,6 +24,9 @@ texhash ~/texmf
 $ make all \
     -e EMAIL=your@mail.com \
     -e MOBILE="+33 6 12 34 56 78" \
-    -e ADDRESS1="1, rue du Camarade" \
-    -e ADDRESS2="75000 Paris, France"
+    -e ADDRESS="1, rue du Camarade 75000 Paris -- France" \
+    -e LANGUAGE=en -e OBJECTIVES=chess \
+    -e OBJECTIVES=chess
 ```
+
+- `OBJECTIVES` can be empty so the default is going to be used.

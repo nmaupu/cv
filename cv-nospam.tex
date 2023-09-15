@@ -38,6 +38,13 @@
   {\small \icon{\faMapMarker}{maincolor}{} @ADDRESS@\\ \icon{\faPhone}{maincolor}{} @MOBILE@\icon{\faAt}{maincolor}{} \href{mailto:@EMAIL@}{\nolinkurl{@EMAIL@}}}
 }
 
+% Loading correct professional objectives macros
+\usepackage{ifthen}
+\newcommand{\objectivesName}{@OBJECTIVES@}
+\ifthenelse{\equal{\objectivesName}{}}
+  {\input{lang/objectives/default-@LANGUAGE@.tex}}
+  {\input{lang/objectives/@OBJECTIVES@-@LANGUAGE@.tex}}
+
 % Lots of stuff are overrides from original hipster-cv package
 \input{includes/bubble.tex}
 \input{includes/colors.tex}

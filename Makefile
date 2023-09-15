@@ -2,17 +2,25 @@ ADDRESS ?= no-spam
 MOBILE ?= no-spam
 EMAIL ?= no-spam
 LANGUAGE ?= fr
+OBJECTIVES ?=
 
-.PHONY: cv.tex all clean view
+ifeq (,$(OBJECTIVES))
+	cv_filename = cv-$(LANGUAGE)
+else
+	cv_filename = cv-$(OBJECTIVES)-$(LANGUAGE)
+endif
 
-all: cv.pdf
+.PHONY: $(cv_filename).tex all clean view
 
-cv.tex:
-	sed -e "s/@ADDRESS@/$(ADDRESS)/g"   \
-	    -e "s/@MOBILE@/$(MOBILE)/g"     \
-	    -e "s/@EMAIL@/$(EMAIL)/g"       \
-	    -e "s/@LANGUAGE@/$(LANGUAGE)/g" \
-	    cv-nospam.tex > cv.tex
+all: $(cv_filename).pdf
+
+$(cv_filename).tex:
+	sed -e "s/@ADDRESS@/$(ADDRESS)/g"       \
+	    -e "s/@MOBILE@/$(MOBILE)/g"         \
+	    -e "s/@EMAIL@/$(EMAIL)/g"           \
+	    -e "s/@LANGUAGE@/$(LANGUAGE)/g"     \
+	    -e "s/@OBJECTIVES@/$(OBJECTIVES)/g" \
+		cv-nospam.tex > $(cv_filename).tex
 
 %.pdf: %.tex
 	pdflatex -halt-on-error $<
@@ -20,7 +28,7 @@ cv.tex:
 	pdflatex -halt-on-error $<
 
 clean:
-	rm -f *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb cv.tex cv.pdf
+	rm -f *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb cv.tex $(cv_filename).tex $(cv_filename).pdf
 
-view: cv.pdf
+view: $(cv_filename).pdf
 	evince $<
