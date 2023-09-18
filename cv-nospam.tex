@@ -35,7 +35,11 @@
 \fancyfoot{} % clear all footer fields
 \fancyfoot[R]{
   \selectfont \color{black!70}
-  {\small \icon{\faMapMarker}{maincolor}{} @ADDRESS@\\ \icon{\faPhone}{maincolor}{} @MOBILE@\icon{\faAt}{maincolor}{} \href{mailto:@EMAIL@}{\nolinkurl{@EMAIL@}}}
+  {\small
+    \ifthenelse{\equal{@ADDRESS@}{}}{}{\icon{\faMapMarker}{maincolor}{} @ADDRESS@\\}
+    \ifthenelse{\equal{@MOBILE@}{}}{}{\icon{\faPhone}{maincolor}{} @MOBILE@}
+    \ifthenelse{\equal{@EMAIL@}{}}{}{\icon{\faAt}{maincolor}{} @EMAIL@}
+  }
 }
 
 % Loading correct professional objectives macros
