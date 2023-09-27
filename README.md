@@ -25,8 +25,10 @@ $ make all \
     -e EMAIL=your@mail.com \
     -e MOBILE="+33 6 12 34 56 78" \
     -e ADDRESS="1, rue du Camarade 75000 Paris -- France" \
-    -e LANGUAGE=en -e OBJECTIVES=chess \
-    -e OBJECTIVES=chess
+    -e LANGUAGE=en \
+    -e OBJECTIVES=misc \
+    -e ISFREELANCE=false
 ```
 
-- `OBJECTIVES` can be empty so the default is going to be used.
+- `ISFREELANCE=true|false`
+- Set any of the variables to `""` to get the default value
