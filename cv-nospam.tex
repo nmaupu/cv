@@ -26,6 +26,9 @@
 \setlength{\leftcolwidth}{0.3\textwidth}
 \setlength{\rightcolwidth}{0.65\textwidth}
 
+\newboolean{isfreelance}
+\setboolean{isfreelance}{@ISFREELANCE@}
+
 % Header / footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -80,7 +83,7 @@
 \header
   {\color{headerbluefont} \huge \bfseries Nicolas Maupu}
   {\color{headerbluefont} \emph{\large \langHeaderJobTitle}}
-  {\color{headerbluefont} \emph{{\bfseries \langFreelance} - \FPround\myage{\myage}{0}\myage+ \langHeaderExperience}}
+  {\color{headerbluefont} \emph{\ifthenelse{\boolean{isfreelance}}{{\bfseries \langFreelance} - }{}\FPround\myage{\myage}{0}\myage+ \langHeaderExperience}}
   {images/qr-github.png}
   {images/qr-linkedin.png}
   {headerblue}
@@ -176,6 +179,7 @@
 %-----------------------------------------------------------
 \switchcolumn
 %-----------------------------------------------------------
+
 
 %\nopagebreak block to avoid breaking the first page anywhere but it will break if too long anyway...
 \nopagebreak[4]
