@@ -26,7 +26,9 @@
   \begin{tikzpicture}%
     \draw[draw=none,fill=#3,opacity=.55] (0,0) circle (0.58);%
     \node[](icon) at (0,0) {#4#1};%
-    \node[below=#5,align=center] at (icon) {#2};%
+    % vphantom is used to force the text height calculation as if there is a char like y, g, p or q present even if absent
+    % Otherwise, align problem occurs when one hobby's name contains such a char and others don't...
+    \node[below=#5,align=center] at (icon) {#2\vphantom{y}};%
   \end{tikzpicture}
 }
 
